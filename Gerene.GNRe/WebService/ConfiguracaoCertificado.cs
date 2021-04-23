@@ -1,6 +1,6 @@
-﻿using Gerene.GNRe.Classes;
+﻿using Gerene.Gnre.Classes;
 
-namespace Gerene.GNRe.WebService
+namespace Gerene.Gnre.WebService
 {
     public sealed class ConfiguracaoCertificado
     {

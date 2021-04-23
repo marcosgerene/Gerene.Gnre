@@ -1,27 +1,31 @@
-﻿using System;
-
-using System.IO;
+﻿using Gerene.Gnre.Classes;
+using System;
 using System.Security.Cryptography.X509Certificates;
-using System.ServiceModel.Channels;
-using System.Text;
-using System.Xml;
 
-namespace Gerene.GNRe.WebService
+namespace Gerene.Gnre.WebService
 {
     public sealed class ServicoRecepcaoLote : WebServiceClient
     {
-        private const string Url = @"http://www.gnre.pe.gov.br/gnreWS/services/GnreConfigUF?wsdl";
+        private const string UrlProducao = @"http://www.gnre.pe.gov.br/gnreWS/services/GnreLoteRecepcao?wsdl";
+        private const string UrlHomologacao = @"http://www.testegnre.pe.gov.br/gnreWS/services/GnreLoteRecepcao?wsdl";
 
-        public ServicoRecepcaoLote(ConfiguracaoWebService configuracao, X509Certificate2 certificado) : base(Url, configuracao, certificado)
+        public ServicoRecepcaoLote(ConfiguracaoWebService configuracao, X509Certificate2 certificado) : base(Url(configuracao), configuracao, certificado)
         {
         }
 
-        public string Processar(string xml)
+        private static string Url(ConfiguracaoWebService configuracao) =>
+            configuracao.Ambiente == TipoAmbiente.Homologacao ? UrlHomologacao :
+            configuracao.Ambiente == TipoAmbiente.Producao ? UrlProducao :
+            throw new NotImplementedException($"Ambiente \"{configuracao.Ambiente}\" não implementado");
+
+        public string Processar(string innerxml)
         {
             PrefixoEnvio = "RecepcaoLoteEnvio";
             PrefixoResposta = "RecepcaoLoteRetorno";
 
-            return Executar(xml, "processar");
+            string resposta = Executar(innerxml, "http://www.gnre.pe.gov.br/webservice/GnreLoteRecepcao", VersaoDados.Versao2, "consultar");
+
+            return null;
         }       
 
     }

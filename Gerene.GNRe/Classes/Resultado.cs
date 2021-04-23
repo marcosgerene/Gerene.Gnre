@@ -4,7 +4,7 @@ using ACBr.Net.DFe.Core.Document;
 using System;
 using System.Collections.Generic;
 
-namespace Gerene.GNRe.Classes
+namespace Gerene.Gnre.Classes
 {
     public sealed class Resultado : DFeDocument<Resultado>
     {

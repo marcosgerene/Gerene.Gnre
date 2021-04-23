@@ -1,26 +1,30 @@
 ﻿using ACBr.Net.Core;
 using ACBr.Net.DFe.Core;
 using ACBr.Net.DFe.Core.Service;
-
+using Gerene.Gnre.Classes;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Gerene.GNRe.WebService
+namespace Gerene.Gnre.WebService
 {
     //Baseado em https://github.com/ACBrNet/ACBr.Net.NFSe/blob/master/src/ACBr.Net.NFSe/Providers/NFSeServiceClient.cs
     public abstract class WebServiceClient : DFeServiceClientBase<IRequestChannel>
     {
-        protected readonly object serviceLock;
+        protected readonly object serviceLock = new object();
 
-        protected string EnvelopeEnvio { get; set; }
-        protected string EnvelopeRetorno { get; set; }
+        public string XmlEnvio { get; private set; }
+        public string XmlRetorno { get; private set; }
+        public string EnvelopeEnvio { get; protected set; }
+        public string EnvelopeRetorno { get; protected set; }
+
         protected string PrefixoEnvio { get; set; }
         protected string PrefixoResposta { get; set; }
         public ConfiguracaoWebService Configuracao { get; set; }
@@ -28,14 +32,20 @@ namespace Gerene.GNRe.WebService
         protected WebServiceClient(string url, ConfiguracaoWebService configuracao, X509Certificate2 certificado) : base(url, TimeSpan.FromMilliseconds(configuracao.Timeout), certificado)
         {
             Configuracao = configuracao;
+
+            var custom = new CustomBinding(Endpoint.Binding);
+            var version = custom.Elements.Find<TextMessageEncodingBindingElement>();
+            version.MessageVersion = MessageVersion.CreateVersion(EnvelopeVersion.Soap12, AddressingVersion.None);
+
+            Endpoint.Binding = custom;
         }
 
-        private Message WriteSoapEnvelope(string message, string soapAction)
+        private Message WriteSoapEnvelope(string message, string _namespace, VersaoDados versao, string soapAction)
         {
             var envelope = new StringBuilder();
-            envelope.Append("<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:gnr=\"http://www.gnre.pe.gov.br/webservice/GnreLoteRecepcao\">");
+            envelope.Append($"<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:gnr=\"{_namespace}\">");
             envelope.Append("<soap:Header>");
-            envelope.Append($"<gnr:gnreCabecMsg><gnr:versaoDados>{Convert.ToInt32(Configuracao.VersaoDados)}</gnr:versaoDados></gnr:gnreCabecMsg>");
+            envelope.Append($"<gnr:gnreCabecMsg><gnr:versaoDados>{(versao == VersaoDados.Versao1 ? "1.00" : "2.00")}</gnr:versaoDados></gnr:gnreCabecMsg>");
             envelope.Append("</soap:Header>");
             envelope.Append("<soap:Body>");
             envelope.Append("<gnr:gnreDadosMsg>");
@@ -55,9 +65,14 @@ namespace Gerene.GNRe.WebService
             return request;
         }
 
-        protected string Executar(string message, string soapAction, params string[] soapNamespaces)
+        protected string Executar(string message, string _namespace, VersaoDados versao, string soapAction)
         {
-            var request = WriteSoapEnvelope(message, soapAction);
+            XmlEnvio = message;
+
+            if (Configuracao.SalvarXmls)
+                GravarXml(XmlEnvio, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoEnvio}_env.xml");
+
+            var request = WriteSoapEnvelope(message, _namespace, versao, soapAction);
 
             RemoteCertificateValidationCallback validation = null;
             if (!Configuracao.ValidarCertificado)
@@ -99,10 +114,8 @@ namespace Gerene.GNRe.WebService
         /// <param name="conteudoArquivo"></param>
         /// <param name="nomeArquivo"></param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        protected virtual void GravarSoap(string conteudoArquivo, string nomeArquivo)
-        {
-            if (!Configuracao.SalvarSoap) return;
-
+        protected virtual void GravarXml(string conteudoArquivo, string nomeArquivo)
+        {            
             string path = Path.Combine(Configuracao.PathXmls, nomeArquivo);
             File.WriteAllText(path, conteudoArquivo, Encoding.UTF8);
         }
@@ -110,13 +123,17 @@ namespace Gerene.GNRe.WebService
         protected override void BeforeSendDFeRequest(string message)
         {
             EnvelopeEnvio = message;
-            GravarSoap(EnvelopeEnvio, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoEnvio}_soap_env.xml");
+
+            if (Configuracao.SalvarSoap)
+                GravarXml(EnvelopeEnvio, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoEnvio}_soap_env.xml");
         }
 
         protected override void AfterReceiveDFeReply(string message)
         {
             EnvelopeRetorno = message;
-            GravarSoap(EnvelopeRetorno, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoResposta}_soap_ret.xml");
+
+            if (Configuracao.SalvarSoap)
+                GravarXml(EnvelopeRetorno, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoResposta}_soap_ret.xml");
         }
 
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Gerene.GNRe.WebService
+namespace Gerene.Gnre.WebService
 {
     public static class Funcoes
     {

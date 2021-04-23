@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gerene.GNRe.Classes
+namespace Gerene.Gnre.Classes
 {
     public enum TipoCertificado
     {
@@ -32,6 +32,12 @@ namespace Gerene.GNRe.Classes
         InvalidadaPelaUf = 2,
         ErroComunicaao = 3,
         PendenciaProcessamento = 4
+    }
+
+    public enum SimNao
+    {
+        S,
+        N
     }
 
 }

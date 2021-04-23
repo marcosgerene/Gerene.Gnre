@@ -4,7 +4,7 @@ using ACBr.Net.DFe.Core.Serializer;
 using System;
 using System.Collections.Generic;
 
-namespace Gerene.GNRe.Classes
+namespace Gerene.Gnre.Classes
 {
     public sealed class Guia : DFeDocument<Guia>
     {
@@ -12,7 +12,7 @@ namespace Gerene.GNRe.Classes
         public SituacaoGuia SituacaoGuia { get; set; }
 
         [DFeElement(TipoCampo.Int, "situacaoGuia")]
-        internal int SituacaoGuiaProxy
+        public int SituacaoGuiaProxy
         {
             get => Convert.ToInt32(SituacaoGuia);
             set => SituacaoGuia = (SituacaoGuia)value;

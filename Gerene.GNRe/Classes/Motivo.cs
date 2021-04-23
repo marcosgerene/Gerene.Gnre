@@ -2,7 +2,7 @@
 using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
 
-namespace Gerene.GNRe.Classes
+namespace Gerene.Gnre.Classes
 {
     public sealed class Motivo : DFeDocument<Motivo>
     {

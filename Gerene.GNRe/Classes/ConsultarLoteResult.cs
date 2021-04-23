@@ -3,7 +3,7 @@ using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
 using System;
 
-namespace Gerene.GNRe.Classes
+namespace Gerene.Gnre.Classes
 {
     [DFeRoot("TResultLote_GNRE")]
     public sealed class ConsultarLoteResult : DFeDocument<ConsultarLoteResult>
@@ -12,14 +12,14 @@ namespace Gerene.GNRe.Classes
         public TipoAmbiente Ambiente { get; set; }
 
         [DFeElement(TipoCampo.Str, "ambiente")]
-        internal int AmbienteProxy
+        public int AmbienteProxy
         {
             get => Convert.ToInt32(Ambiente);
             set => Ambiente = (TipoAmbiente)value;
         }
 
         [DFeElement("situacaoProcess")]
-        public SituacaoProcess SituacaoProcess { get; set; }
+        public Situacao SituacaoProcess { get; set; }
 
         [DFeElement("resultado")]
         public Resultado Resultado { get; set; }

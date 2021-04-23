@@ -1,20 +1,17 @@
-﻿using Gerene.GNRe.Classes;
+﻿using Gerene.Gnre.Classes;
 
-namespace Gerene.GNRe.WebService
+namespace Gerene.Gnre.WebService
 {
     public sealed class ConfiguracaoWebService
     {
-        public VersaoDados VersaoDados => VersaoDados.Versao2;
-
+        public TipoAmbiente Ambiente { get; set; }
+       
         public bool ValidarCertificado { get; set; }
 
         public int Timeout { get; set; }
         public bool SalvarXmls { get; set; }
         public bool SalvarSoap { get; set; }
         public string PathXmls { get; set; }
-
-        public string XmlEnvio { get; private set; }
-        public string XmlResposta { get; private set; }
-
     }
+
 }

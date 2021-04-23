@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gerene.GNRe.Classes
+namespace Gerene.Gnre.Classes
 {
     [DFeRoot("TConsLote_GNRE", Namespace = "http://www.gnre.pe.gov.br")]
     public sealed class ConsultaLoteRequest : DFeDocument<ConsultaLoteRequest>
@@ -14,7 +14,7 @@ namespace Gerene.GNRe.Classes
         public TipoAmbiente Ambiente { get; set; }
 
         [DFeElement(TipoCampo.Str, "ambiente")]
-        internal int AmbienteProxy
+        public int AmbienteProxy
         {
             get => Convert.ToInt32(Ambiente);
             set => Ambiente = (TipoAmbiente)value;
@@ -24,7 +24,7 @@ namespace Gerene.GNRe.Classes
         public string NumeroRecibo { get; set; }
 
         [DFeIgnore]
-        internal string IncluirPdfsGuiasProxy
+        public string IncluirPdfsGuiasProxy
         {
             get => IncluirPdfsGuias ? "S" : "N";
             set => IncluirPdfsGuias = value == "S" ? true : value == "N" ? false : throw new ArgumentException($"IncluirPdfsGuias - \"{value}\"");

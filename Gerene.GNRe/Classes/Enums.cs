@@ -40,4 +40,22 @@ namespace Gerene.Gnre.Classes
         N
     }
 
+    public enum ValorExigido
+    {
+        P,
+        T,
+        A,
+        PO,
+        TO,
+        AO,
+        N
+    }
+
+    public enum TipoCampoAdicional
+    {
+        T,
+        N,
+        D
+    }
+
 }

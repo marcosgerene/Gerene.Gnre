@@ -3,7 +3,6 @@ using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Gerene.Gnre.Classes
 {
@@ -26,14 +25,21 @@ namespace Gerene.Gnre.Classes
         [DFeElement("situacaoConsulta")]
         public Situacao SituacaoConsulta { get; set; }
 
-        [DFeAttribute(TipoCampo.Enum, "exigeUfFavorecida")]
-        public SimNao ExigeUfFavorecida { get; set; }
+        [DFeAttribute(TipoCampo.Enum, "exigeUfFavorecida", Ocorrencia = Ocorrencia.NaoObrigatoria)]
+        public SimNao? ExigeUfFavorecida { get; set; }
 
-        [DFeAttribute(TipoCampo.Enum, "exigeReceita")]
-        public SimNao ExigeReceita { get; set; }
+        //campo em exigeUfFavorecida
 
-        //[DFeElement("receitas")]
-        //public List<Receita> Receitas { get; set; }            
+        [DFeAttribute(TipoCampo.Enum, "exigeReceita", Ocorrencia = Ocorrencia.NaoObrigatoria)]
+        public SimNao? ExigeReceita { get; set; }
+
+        //campo em exigeReceita 
+
+        [DFeElement("receitas")]
+        public Receitas Receitas { get; set; }
+
+        [DFeElement("versoesXml")]
+        public VersoesXml VersoesXml { get; set; }
 
     }
 }

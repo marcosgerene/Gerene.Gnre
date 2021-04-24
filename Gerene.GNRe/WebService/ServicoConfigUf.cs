@@ -9,7 +9,7 @@ namespace Gerene.Gnre.WebService
     {
         private const string UrlProducao = @"https://www.gnre.pe.gov.br/gnreWS/services/GnreLoteRecepcao?wsdl";
         private const string UrlHomologacao = @"https://www.testegnre.pe.gov.br/gnreWS/services/GnreConfigUF?wsdl";
-        private const string ArquivoSchema = @"config_uf_v1.00.xsd";
+        private const string ArquivoSchema = @"consulta_config_uf_v1.00.xsd";
 
         public ServicoConfigUf(ConfiguracaoWebService configuracao, X509Certificate2 certificado) : base(Url(configuracao), configuracao, certificado)
         {

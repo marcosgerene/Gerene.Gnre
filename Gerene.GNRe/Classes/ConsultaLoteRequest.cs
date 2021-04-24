@@ -23,14 +23,15 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "numeroRecibo")]
         public string NumeroRecibo { get; set; }
 
-        [DFeIgnore]
+        
+        [DFeElement(TipoCampo.Str, "incluirPDFGuias")]
         public string IncluirPdfsGuiasProxy
         {
             get => IncluirPdfsGuias ? "S" : "N";
-            set => IncluirPdfsGuias = value == "S" ? true : value == "N" ? false : throw new ArgumentException($"IncluirPdfsGuias - \"{value}\"");
+            set => IncluirPdfsGuias = value == "S" || (value == "N" ? false : throw new ArgumentException($"IncluirPdfsGuias - \"{value}\""));
         }
 
-        [DFeElement(TipoCampo.Str, "incluirPDFGuias")]
+        [DFeIgnore]
         public bool IncluirPdfsGuias { get; set; }        
     }
 }

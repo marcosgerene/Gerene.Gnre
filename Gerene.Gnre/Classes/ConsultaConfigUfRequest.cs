@@ -21,8 +21,8 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "uf")]
         public string Uf { get; set; }
 
-        [DFeAttribute(TipoCampo.Enum, "courier", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public SimNao? Courier { get; set; }
+        //[DFeAttribute(TipoCampo.Enum, "courier", Ocorrencia = Ocorrencia.NaoObrigatoria)]
+        //public SimNao? Courier { get; set; }
 
         [DFeElement(TipoCampo.Str, "receita")]
         public string Receita { get; set; }

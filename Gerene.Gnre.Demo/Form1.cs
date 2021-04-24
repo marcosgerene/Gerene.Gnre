@@ -22,7 +22,7 @@ namespace Gerene.Gnre.Demo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new GnreClient().ConfigUf("RN", "100102");
+            var result = new GnreClient().ConfigUf("RN", "100102");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -41,8 +41,8 @@ namespace Gerene.Gnre.Demo
                 TipoIdentificacaoEmitente = TipoIdentificacao.Cnpj,
                 IdContribuinteEmitente = new IdContribuinte() { Cnpj = "26363645000182" },
                 TipoDocOrigem = "10",
-                DocOrigem = "11111",
-                ValorPrincipal = 4.65M,
+                DocOrigem = "312462",
+                ValorPrincipal = 4.62M,
                 DataVencimento = DateTime.Today,
                 RazaoSocialEmitente = "Marcos Gerene Felix Spirito - ME",
                 EnderecoEmitente = "Rua XV de Novembro, 196",
@@ -57,12 +57,12 @@ namespace Gerene.Gnre.Demo
             {
                 UfFavorecida = "MG",
                 Receita = "100129",
-                //DetalhamentoReceita = "000051",
+                DetalhamentoReceita = "000051",
                 TipoIdentificacaoEmitente = TipoIdentificacao.Cnpj,
                 IdContribuinteEmitente = new IdContribuinte() { Cnpj = "26363645000182" },
                 TipoDocOrigem = "10",
-                DocOrigem = "1111",
-                ValorPrincipal = 4.65M,
+                DocOrigem = "312462",
+                ValorPrincipal = 1.53M,
                 DataVencimento = DateTime.Today,
                 RazaoSocialEmitente = "Marcos Gerene Felix Spirito - ME",
                 EnderecoEmitente = "Rua XV de Novembro, 196",
@@ -79,6 +79,20 @@ namespace Gerene.Gnre.Demo
 
             var result = new GnreClient().RecepcaoLote(lote);
             MessageBox.Show(result.Recibo.Numero);
+            
+            recibo = result.Recibo.Numero;
+        }
+
+        private string recibo = null;
+
+        private void button4_Click(object sender, EventArgs e)
+        {            
+            var resultado = new GnreClient().ResultadoLote(recibo, true);
+
+            MessageBox.Show(resultado.SituacaoProcess.Descricao);
+
+            if (resultado.Resultado.PdfGuias != null)
+                File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{recibo}.pdf"), resultado.Resultado.PdfGuias);
         }
     }
 }

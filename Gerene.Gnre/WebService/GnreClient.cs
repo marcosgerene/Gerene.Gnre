@@ -32,7 +32,7 @@ namespace Gerene.Gnre.WebService
 
                 DiretorioXmls = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Gnre"),
                 SalvarXmls = true,
-                SalvarSoap = true,
+                SalvarSoap = false,
 
                 ValidarSchemas = true,
                 DiretorioSchemas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Schemas"),
@@ -124,7 +124,7 @@ namespace Gerene.Gnre.WebService
                 Ambiente = ConfiguracaoWebService.Ambiente,
                 Uf = uf,
                 Receita = receita,
-                Courier = courier
+                //Courier = courier
             };
 
             ConsultaConfigUfResult resposta = null;

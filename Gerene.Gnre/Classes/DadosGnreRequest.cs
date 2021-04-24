@@ -139,7 +139,6 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement(TipoCampo.Str, "c42_identificadorGuia", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 28)]
         public string IdentificadorGuia { get; set; }
-
     }
 
 }

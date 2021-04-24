@@ -58,4 +58,17 @@ namespace Gerene.Gnre.Classes
         D
     }
 
+    public enum TipoIdentificacao
+    {
+        Cnpj = 1,
+        Cpf = 2
+    }
+
+    public enum TipoCampoExtra
+    {
+        T,
+        N,
+        D
+    }
+
 }

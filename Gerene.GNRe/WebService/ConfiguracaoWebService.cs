@@ -11,7 +11,10 @@ namespace Gerene.Gnre.WebService
         public int Timeout { get; set; }
         public bool SalvarXmls { get; set; }
         public bool SalvarSoap { get; set; }
-        public string PathXmls { get; set; }
+        public string DiretorioXmls { get; set; }
+
+        public bool ValidarSchemas { get; set; }
+        public string DiretorioSchemas { get; set; }
     }
 
 }

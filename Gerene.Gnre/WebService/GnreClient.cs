@@ -30,11 +30,48 @@ namespace Gerene.Gnre.WebService
 
                 ValidarCertificado = true,
 
-                PathXmls = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Gnre"),
+                DiretorioXmls = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Gnre"),
                 SalvarXmls = true,
-                SalvarSoap = true
+                SalvarSoap = true,
+
+                ValidarSchemas = true,
+                DiretorioSchemas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Schemas"),
             };
         }
+
+        #region RecepcaoLote
+        public async Task<RecepcaoLoteResult> RecepcaoLoteAsync(LoteGnreRequest request)
+        {
+            RecepcaoLoteResult resposta = null;
+
+            await Task.Run(() =>
+            {
+                using (var certificado = CertificadoDigital.ObterDadosCertificado(ConfiguracaoCertificado))
+                {
+                    using (var servico = new ServicoRecepcaoLote(ConfiguracaoWebService, certificado))
+                    {
+                        resposta = servico.Processar(request);
+                    }
+                }
+            });
+
+            return resposta;
+        }
+
+        public RecepcaoLoteResult RecepcaoLote(LoteGnreRequest request)
+        {
+            RecepcaoLoteResult resposta = null;
+
+            Task task = Task.Run(async () =>
+            {
+                resposta = await RecepcaoLoteAsync(request);
+            });
+
+            task.Wait();
+
+            return resposta;
+        }
+        #endregion
 
         #region ResultadoLote
         public async Task<ConsultarLoteResult> ResultadoLoteAsync(string numeroRecibo, bool incluirPdf)

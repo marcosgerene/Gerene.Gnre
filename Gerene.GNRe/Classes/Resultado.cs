@@ -9,13 +9,18 @@ namespace Gerene.Gnre.Classes
     public sealed class Resultado : DFeDocument<Resultado>
     {
         [DFeCollection("guia")]
-        public List<Guia> Guia { get; set; }
+        public List<GuiaResult> Guia { get; set; }
 
         [DFeElement("pdfGuias")]
         internal string PdfGuiasProxy { get; set; }
 
         [DFeIgnore]
         public byte[] PdfGuias => PdfGuiasProxy.IsNull() ? null : Convert.FromBase64String(PdfGuiasProxy);
+
+        public Resultado()
+        {
+            Guia = new List<GuiaResult>();
+        }
 
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
-    public sealed class Guia : DFeDocument<Guia>
+    public sealed class GuiaResult : DFeDocument<GuiaResult>
     {
         [DFeIgnore]
         public SituacaoGuia SituacaoGuia { get; set; }

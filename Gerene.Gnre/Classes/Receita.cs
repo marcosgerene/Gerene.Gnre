@@ -128,7 +128,15 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement("camposAdicionais")]
         public CamposAdicionais CamposAdicionais { get; set; }
+
+        public Receita()
+        {
+            DetalhamentosReceita = new DetalhamentosReceita();
+            Produtos = new Produtos();
+            PeriodosApuracao = new PeriodosApuracao();
+            TiposDocumentosOrigem = new TiposDocumentosOrigem();
+            VersoesXmlDocOrigem = new VersoesXml();
+            CamposAdicionais = new CamposAdicionais();
+        }
     }
-
-
 }

@@ -40,6 +40,12 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement("versoesXml")]
         public VersoesXml VersoesXml { get; set; }
-     
+
+        public ConsultaConfigUfResult()
+        {
+            SituacaoConsulta = new Situacao();
+            Receitas = new Receitas();
+            VersoesXml = new VersoesXml();
+        }
     }
 }

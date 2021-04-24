@@ -10,5 +10,10 @@ namespace Gerene.Gnre.Classes
     {
         [DFeCollection("periodoApuracao")]
         public List<PeriodoApuracao> PeriodoApuracao { get; set; }
+
+        public PeriodosApuracao()
+        {
+            PeriodoApuracao = new List<PeriodoApuracao>();
+        }
     }
 }

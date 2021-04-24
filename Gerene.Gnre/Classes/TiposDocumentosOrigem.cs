@@ -8,5 +8,10 @@ namespace Gerene.Gnre.Classes
     {
         [DFeCollection("tipoDocumentoOrigem")]
         public List<TipoDocumentoOrigem> TipoDocumentoOrigem { get; set; }
+
+        public TiposDocumentosOrigem()
+        {
+            TipoDocumentoOrigem = new List<TipoDocumentoOrigem>();
+        }
     }
 }

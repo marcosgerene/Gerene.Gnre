@@ -8,5 +8,10 @@ namespace Gerene.Gnre.Classes
     {
         [DFeCollection("campoAdicional")]
         public List<CampoAdicional> CampoAdicional { get; set; }
+
+        public CamposAdicionais()
+        {
+            CampoAdicional = new List<CampoAdicional>();
+        }
     }
 }

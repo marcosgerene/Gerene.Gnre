@@ -138,7 +138,7 @@ namespace Gerene.Gnre.WebService
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected virtual void GravarXml(string conteudoArquivo, string nomeArquivo)
         {            
-            string path = Path.Combine(Configuracao.PathXmls, nomeArquivo);
+            string path = Path.Combine(Configuracao.DiretorioXmls, nomeArquivo);
             File.WriteAllText(path, conteudoArquivo, Encoding.UTF8);
         }
 

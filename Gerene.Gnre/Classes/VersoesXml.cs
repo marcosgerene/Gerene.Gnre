@@ -9,5 +9,10 @@ namespace Gerene.Gnre.Classes
     {
         [DFeCollection(TipoCampo.Str, "versao")]
         public List<string> Versao { get; set; }
+
+        public VersoesXml()
+        {
+            Versao = new List<string>();
+        }
     }
 }

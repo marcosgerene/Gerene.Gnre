@@ -8,5 +8,10 @@ namespace Gerene.Gnre.Classes
     {
         [DFeCollection("receita")]
         public List<Receita> Receita { get; set; }
+
+        public Receitas()
+        {
+            Receita = new List<Receita>();
+        }
     }
 }

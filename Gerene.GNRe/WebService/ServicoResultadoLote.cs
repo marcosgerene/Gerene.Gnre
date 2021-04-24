@@ -1,9 +1,6 @@
 ﻿using Gerene.Gnre.Classes;
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using System.ServiceModel.Channels;
-using System.Text;
 
 namespace Gerene.Gnre.WebService
 {
@@ -11,6 +8,7 @@ namespace Gerene.Gnre.WebService
     {
         private const string UrlProducao = @"https://www.gnre.pe.gov.br/gnreWS/services/GnreResultadoLote?wsdl";
         private const string UrlHomologacao = @"http://www.testegnre.pe.gov.br/gnreWS/services/GnreResultadoLote?wsdl";
+        private const string ArquivoSchema = @"lote_gnre_consulta_v1.00.xsd";
 
         public ServicoResultadoLote(ConfiguracaoWebService configuracao, X509Certificate2 certificado) : base(Url(configuracao), configuracao, certificado)
         {
@@ -26,9 +24,12 @@ namespace Gerene.Gnre.WebService
             PrefixoEnvio = "ResultadoLoteEnvio";
             PrefixoResposta = "ResultadoLoteRetorno";
 
-            string innerxml = request.GetXml();           
+            string innerxml = request.GetXml();
 
-            string resposta =  Executar(innerxml, "http://www.gnre.pe.gov.br/webservice/GnreResultadoLote", VersaoDados.Versao2, "consultar");
+            if (Configuracao.ValidarSchemas)
+                new Validador(Configuracao).Validar(innerxml, ArquivoSchema);
+
+            string resposta =  Executar(innerxml, "http://www.gnre.pe.gov.br/webservice/GnreResultadoLote", VersaoDados.Versao1, "consultar");
 
             return null;
         }

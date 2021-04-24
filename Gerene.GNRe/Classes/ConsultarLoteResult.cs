@@ -23,5 +23,11 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement("resultado")]
         public Resultado Resultado { get; set; }
+
+        public ConsultarLoteResult()
+        {
+            SituacaoProcess = new Situacao();
+            Resultado = new Resultado();
+        }
     }
 }

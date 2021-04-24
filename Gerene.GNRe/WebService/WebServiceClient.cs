@@ -1,4 +1,5 @@
 ﻿using ACBr.Net.Core;
+using ACBr.Net.Core.Extensions;
 using ACBr.Net.DFe.Core;
 using ACBr.Net.DFe.Core.Service;
 using Gerene.Gnre.Classes;
@@ -99,14 +100,35 @@ namespace Gerene.Gnre.WebService
                     ServicePointManager.ServerCertificateValidationCallback = validation;
             }
 
-            return soapResponse;
+            var xmlDocument = XDocument.Parse(soapResponse);
+            var retorno = TratarRetorno(xmlDocument);
+            if (retorno.IsValidXml())
+            {
+                if (Configuracao.SalvarXmls)
+                {
+                    XmlRetorno = retorno;
+                    GravarXml(XmlRetorno, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoEnvio}_ret.xml");
+                }
 
-            //var xmlDocument = XDocument.Parse(soapResponse);
-            //var retorno = TratarRetorno(xmlDocument, responseTag);
-            //if (retorno.IsValidXml()) return retorno;
+                return retorno;
+            }
 
-            //throw new ApplicationException(retorno);
-        }               
+            throw new ApplicationException(retorno);
+        }
+
+        protected string TratarRetorno(XDocument xmlDocument)
+        {
+            var element = xmlDocument.ElementAnyNs("Fault");
+            if (element != null)
+            {
+                var exMessage = $"{element.ElementAnyNs("Code")?.ElementAnyNs("Value")?.GetValue<string>()} - " +
+                                $"{element.ElementAnyNs("Reason")?.ElementAnyNs("Text")?.GetValue<string>()}";
+                throw new ACBrDFeCommunicationException(exMessage);
+            }
+
+            return xmlDocument.ToXmlDocument().OuterXml;
+        }
+
 
         /// <summary>
         /// Salvar o arquivo xml no disco de acordo com as propriedades.

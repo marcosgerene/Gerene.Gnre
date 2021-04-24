@@ -6,8 +6,8 @@ namespace Gerene.Gnre.Classes
 {
     public sealed class Situacao : DFeDocument<Situacao>
     {
-        [DFeElement(TipoCampo.Int, "codigo")]
-        public int Codigo { get; set; }
+        [DFeElement(TipoCampo.Str, "codigo")]
+        public string Codigo { get; set; }
 
         [DFeElement(TipoCampo.Str, "descricao")]
         public string Descricao { get; set; }

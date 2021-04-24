@@ -90,7 +90,7 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "linhaDigitavel")]
         public string LinhaDigitavel { get; set; }
 
-        [DFeElement("motivosRejeicao")]
+        [DFeCollection("motivosRejeicao")]
         public List<Motivo> MotivosRejeicao { get; set; }
 
     }

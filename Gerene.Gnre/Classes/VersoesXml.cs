@@ -7,7 +7,7 @@ namespace Gerene.Gnre.Classes
 {
     public sealed class VersoesXml : DFeDocument<VersoesXml>
     {
-        [DFeElement(TipoCampo.Str, "versao")]
+        [DFeCollection(TipoCampo.Str, "versao")]
         public List<string> Versao { get; set; }
     }
 }

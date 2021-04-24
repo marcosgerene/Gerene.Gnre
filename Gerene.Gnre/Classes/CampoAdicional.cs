@@ -35,5 +35,10 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement("versoesXmlCampoAdicional")]
         public VersoesXml VersoesXmlCampoAdicional { get; set; }
+
+        public CampoAdicional()
+        {
+            VersoesXmlCampoAdicional = new VersoesXml();
+        }
     }
 }

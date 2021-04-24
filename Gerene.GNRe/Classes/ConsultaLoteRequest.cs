@@ -13,7 +13,7 @@ namespace Gerene.Gnre.Classes
         [DFeIgnore]
         public TipoAmbiente Ambiente { get; set; }
 
-        [DFeElement(TipoCampo.Str, "ambiente")]
+        [DFeElement(TipoCampo.Int, "ambiente")]
         public int AmbienteProxy
         {
             get => Convert.ToInt32(Ambiente);

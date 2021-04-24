@@ -26,10 +26,9 @@ namespace Gerene.Gnre.WebService
 
             string innerxml = request.GetXml(DFeSaveOptions.DisableFormatting | DFeSaveOptions.OmitDeclaration | DFeSaveOptions.RemoveSpaces);
 
-
             string resposta = Executar(innerxml, "http://www.gnre.pe.gov.br/webservice/GnreConfigUF", VersaoDados.Versao1, "consultar");
 
-            return null;
+            return ConsultaConfigUfResult.Load(resposta);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Gerene.Gnre.Classes
 {
     public sealed class CamposAdicionais : DFeDocument<CamposAdicionais>
     {
-        [DFeElement("campoAdicional")]
+        [DFeCollection("campoAdicional")]
         public List<CampoAdicional> CampoAdicional { get; set; }
     }
 }

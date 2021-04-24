@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
-    [DFeRoot("TConsultaConfigUf", Namespace = "http://www.gnre.pe.gov.br")]
+    [DFeRoot("TConfigUf", Namespace = "http://www.gnre.pe.gov.br")]
     public sealed class ConsultaConfigUfResult : DFeDocument<ConsultaConfigUfResult>
     {
         [DFeIgnore]
         public TipoAmbiente Ambiente { get; set; }
 
-        [DFeElement(TipoCampo.Str, "ambiente")]
+        [DFeElement(TipoCampo.Int, "ambiente")]
         public int AmbienteProxy
         {
             get => Convert.ToInt32(Ambiente);
@@ -40,6 +40,6 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement("versoesXml")]
         public VersoesXml VersoesXml { get; set; }
-
+     
     }
 }

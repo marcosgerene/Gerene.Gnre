@@ -8,7 +8,7 @@ namespace Gerene.Gnre.Classes
 {
     public sealed class PeriodosApuracao : DFeDocument<PeriodosApuracao>
     {
-        [DFeElement("periodoApuracao")]
+        [DFeCollection("periodoApuracao")]
         public List<PeriodoApuracao> PeriodoApuracao { get; set; }
     }
 }

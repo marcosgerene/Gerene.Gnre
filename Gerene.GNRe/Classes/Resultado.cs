@@ -8,7 +8,7 @@ namespace Gerene.Gnre.Classes
 {
     public sealed class Resultado : DFeDocument<Resultado>
     {
-        [DFeElement("guia")]
+        [DFeCollection("guia")]
         public List<Guia> Guia { get; set; }
 
         [DFeElement("pdfGuias")]

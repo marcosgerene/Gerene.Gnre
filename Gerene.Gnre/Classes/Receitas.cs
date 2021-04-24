@@ -6,7 +6,7 @@ namespace Gerene.Gnre.Classes
 {
     public sealed class Receitas : DFeDocument<Receita>
     {
-        [DFeElement("receita")]
+        [DFeCollection("receita")]
         public List<Receita> Receita { get; set; }
     }
 }

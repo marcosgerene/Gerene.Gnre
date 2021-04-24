@@ -6,7 +6,7 @@ namespace Gerene.Gnre.Classes
 {
     public sealed class TiposDocumentosOrigem : DFeDocument<TiposDocumentosOrigem>
     {
-        [DFeElement("tipoDocumentoOrigem")]
+        [DFeCollection("tipoDocumentoOrigem")]
         public List<TipoDocumentoOrigem> TipoDocumentoOrigem { get; set; }
     }
 }

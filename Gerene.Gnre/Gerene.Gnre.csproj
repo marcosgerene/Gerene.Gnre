@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/marcosgerene/Gerene.Gnre</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Projeto para consumo do webservice de Gnre (http://www.gnre.pe.gov.br/gnre/portal/GNRE_Principal.jsp).</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

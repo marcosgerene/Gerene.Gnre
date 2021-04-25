@@ -7,7 +7,7 @@ namespace Gerene.Gnre.WebService
 {
     public sealed class ServicoConfigUf : WebServiceClient
     {
-        private const string UrlProducao = @"https://www.gnre.pe.gov.br/gnreWS/services/GnreLoteRecepcao?wsdl";
+        private const string UrlProducao = @"https://www.gnre.pe.gov.br/gnreWS/services/GnreConfigUF?wsdl";
         private const string UrlHomologacao = @"https://www.testegnre.pe.gov.br/gnreWS/services/GnreConfigUF?wsdl";
         private const string ArquivoSchema = @"consulta_config_uf_v1.00.xsd";
 

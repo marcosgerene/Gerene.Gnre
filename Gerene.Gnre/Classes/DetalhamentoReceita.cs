@@ -7,7 +7,7 @@ namespace Gerene.Gnre.Classes
     public sealed class DetalhamentoReceita : DFeDocument<DetalhamentoReceita>
     {
         [DFeElement(TipoCampo.Str, "codigo")]
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
 
         [DFeElement(TipoCampo.Str, "descricao")]
         public string Descricao { get; set; }

@@ -135,7 +135,7 @@ namespace Gerene.Gnre.WebService
         #endregion
 
         #region ConfigUf
-        public async Task<ConsultaConfigUfResult> ConfigUfAsync(string uf, string receita, SimNao? courier = null)
+        public async Task<ConsultaConfigUfResult> ConfigUfAsync(string uf, string receita = null, SimNao? courier = null)
         {
             var request = new ConsultaConfigUfRequest()
             {
@@ -169,7 +169,7 @@ namespace Gerene.Gnre.WebService
             return resposta;
         }
 
-        public ConsultaConfigUfResult ConfigUf(string uf, string receita, SimNao? courier = null)
+        public ConsultaConfigUfResult ConfigUf(string uf, string receita = null, SimNao? courier = null)
         {
             ConsultaConfigUfResult resposta = null;
 

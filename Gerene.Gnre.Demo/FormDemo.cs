@@ -159,8 +159,6 @@ namespace Gerene.Gnre.Demo
 
             string receita = "100102";
             receita = InputBox("Informe a receita", receita);
-            if (receita.Length != 6)
-                return;
 
             string courier = "N";
             courier = InputBox("Courier", courier);

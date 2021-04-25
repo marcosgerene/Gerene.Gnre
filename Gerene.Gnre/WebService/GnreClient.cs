@@ -11,12 +11,15 @@ namespace Gerene.Gnre.WebService
         public ConfiguracaoCertificado ConfiguracaoCertificado { get; set; }
         public ConfiguracaoWebService ConfiguracaoWebService { get; set; }
 
+        public string XmlEnvio { get; private set; }
+        public string XmlResposta { get; private set; }
+
         public GnreClient()
         {
             ConfiguracaoCertificado = new ConfiguracaoCertificado()
             {
                 Tipo = TipoCertificado.A1Repositorio,
-                Serial = "05d75a9b9829a807",
+                Serial = null,
                 Senha = null,
                 Path = null,
                 ArrayBytes = null,
@@ -30,12 +33,12 @@ namespace Gerene.Gnre.WebService
 
                 ValidarCertificado = true,
 
-                DiretorioXmls = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Gnre"),
+                DiretorioXmls = string.Empty,
                 SalvarXmls = true,
                 SalvarSoap = false,
 
                 ValidarSchemas = true,
-                DiretorioSchemas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Schemas"),
+                DiretorioSchemas = string.Empty,
             };
         }
 
@@ -50,7 +53,15 @@ namespace Gerene.Gnre.WebService
                 {
                     using (var servico = new ServicoRecepcaoLote(ConfiguracaoWebService, certificado))
                     {
-                        resposta = servico.Processar(request);
+                        try
+                        {
+                            resposta = servico.Processar(request);
+                        }
+                        finally
+                        {
+                            XmlEnvio = servico.XmlEnvio;
+                            XmlResposta = servico.XmlResposta;
+                        }
                     }
                 }
             });
@@ -92,7 +103,15 @@ namespace Gerene.Gnre.WebService
                 {
                     using (var servico = new ServicoResultadoLote(ConfiguracaoWebService, certificado))
                     {
-                        resposta = servico.Consultar(request);
+                        try
+                        {
+                            resposta = servico.Consultar(request);
+                        }
+                        finally
+                        {
+                            XmlEnvio = servico.XmlEnvio;
+                            XmlResposta = servico.XmlResposta;
+                        }
                     }
                 }
             });
@@ -118,7 +137,6 @@ namespace Gerene.Gnre.WebService
         #region ConfigUf
         public async Task<ConsultaConfigUfResult> ConfigUfAsync(string uf, string receita, SimNao? courier = null)
         {
-
             var request = new ConsultaConfigUfRequest()
             {
                 Ambiente = ConfiguracaoWebService.Ambiente,
@@ -135,7 +153,15 @@ namespace Gerene.Gnre.WebService
                 {
                     using (var servico = new ServicoConfigUf(ConfiguracaoWebService, certificado))
                     {
-                        resposta = servico.Consultar(request);
+                        try
+                        {
+                            resposta = servico.Consultar(request);
+                        }
+                        finally
+                        {
+                            XmlEnvio = servico.XmlEnvio;
+                            XmlResposta = servico.XmlResposta;
+                        }
                     }
                 }
             });

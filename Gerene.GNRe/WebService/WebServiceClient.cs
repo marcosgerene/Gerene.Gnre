@@ -22,7 +22,7 @@ namespace Gerene.Gnre.WebService
         protected readonly object serviceLock = new object();
 
         public string XmlEnvio { get; private set; }
-        public string XmlRetorno { get; private set; }
+        public string XmlResposta { get; private set; }
         public string EnvelopeEnvio { get; protected set; }
         public string EnvelopeRetorno { get; protected set; }
 
@@ -106,8 +106,8 @@ namespace Gerene.Gnre.WebService
             {
                 if (Configuracao.SalvarXmls)
                 {
-                    XmlRetorno = retorno;
-                    GravarXml(XmlRetorno, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoEnvio}_ret.xml");
+                    XmlResposta = retorno;
+                    GravarXml(XmlResposta, $"{DateTime.Now:yyyyMMddssfff}_{PrefixoEnvio}_ret.xml");
                 }
 
                 return retorno;

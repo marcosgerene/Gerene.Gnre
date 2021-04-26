@@ -6,8 +6,6 @@ Projeto para consumo do webservice de Gnre (http://www.gnre.pe.gov.br/gnre/porta
 
 O projeto foi desenvolvido em C# .Net Standard 2.0 e conta com um Demo em .Net 5.
 
-Para o consumo do método RecepcaoLote, foi implmentado somente a versão 1.00 (até o momento).
-
 Antes de iniciar
 ----
 Antes de iniciar a implementação da biblioteca:

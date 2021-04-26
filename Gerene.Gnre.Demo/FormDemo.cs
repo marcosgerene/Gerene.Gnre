@@ -84,26 +84,15 @@ namespace Gerene.Gnre.Demo
             };
 
             //Substitua os dados para realizar o teste
-            var dados = new DadosGnreRequestVersao1()
+            var dados = new DadosGnreRequest()
             {
-                UfFavorecida = "XX",
-                Receita = "100102", //100102 - Difal, 100129 - Fcp
-                TipoIdentificacaoEmitente = TipoIdentificacao.Cnpj,
-                IdContribuinteEmitente = new IdContribuinte() { Cnpj = "00000000000000" },
-                TipoDocOrigem = "10", //10 - Documento fiscal eletronico
-                DocOrigem = "000000", //Numero do documento
-                ValorPrincipal = 0.00M,
-                DataVencimento = DateTime.Today,
-                RazaoSocialEmitente = "XXXXXXXX",
-                EnderecoEmitente = "XXXXXX",
-                MunicipioEmitente = 00000,
-                UfEnderecoEmitente = "XX",
-                CepEmitente = "XXXXXX",
-                TelefoneEmitente = "XXXXXX",
-                DataPagamento = DateTime.Today
+                Versao = "2.00", //"1.00"
+                /*
+                 Atributos da versão selecionada
+                 */
             };
             
-            request.Guias.DadosGnreVersao1.Add(dados);
+            request.Guias.DadosGnre.Add(dados);
 
             var client = GetClient();
 

@@ -18,146 +18,190 @@ namespace Gerene.Gnre.Classes
             set => SituacaoGuia = (SituacaoGuia)value;
         }
 
-        [DFeElement(TipoCampo.Str, "c01_UfFavorecida", Ocorrencia = Ocorrencia.Obrigatoria)]
-        public string UfFavorecida { get; set; }
+        #region Dados Versao1
+        [DFeElement(TipoCampo.Str, "c01_UfFavorecida")]
+        public string UfFavorecidaV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c02_receita", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string Receita { get; set; }
+        [DFeElement(TipoCampo.Str, "c02_receita")]
+        public string ReceitaV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c25_detalhamentoReceita", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string DetalhamentoReceita { get; set; }
+        [DFeElement(TipoCampo.Str, "c25_detalhamentoReceita")]
+        public string DetalhamentoReceitaV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c26_produto", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string Produto { get; set; }
+        [DFeElement(TipoCampo.Str, "c26_produto")]
+        public string ProdutoV1 { get; set; }
 
-
-        [DFeElement(TipoCampo.Int, "c27_tipoIdentificacaoEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public int? TipoIdentificacaoEmitenteProxy
+        [DFeElement(TipoCampo.Int, "c27_tipoIdentificacaoEmitente")]
+        public int? TipoIdentificacaoEmitenteV1Proxy
         {
-            get => TipoIdentificacaoEmitente.HasValue ? (int?)Convert.ToInt32(TipoIdentificacaoEmitente) : null;
+            get => TipoIdentificacaoEmitenteV1.HasValue ? (int?)Convert.ToInt32(TipoIdentificacaoEmitenteV1) : null;
             set
             {
                 if (value.HasValue)
-                    TipoIdentificacaoEmitente = (TipoIdentificacao)value.Value;
+                    TipoIdentificacaoEmitenteV1 = (TipoIdentificacao)value.Value;
                 else
-                    TipoIdentificacaoEmitente = null;
+                    TipoIdentificacaoEmitenteV1 = null;
             }
         }
 
         [DFeIgnore]
-        public TipoIdentificacao? TipoIdentificacaoEmitente { get; set; }
+        public TipoIdentificacao? TipoIdentificacaoEmitenteV1 { get; set; }
 
-        [DFeElement("c03_idContribuinteEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public IdContribuinte IdContribuinteEmitente { get; set; }
+        [DFeElement("c03_idContribuinteEmitente")]
+        public IdContribuinte IdContribuinteEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c28_tipoDocOrigem", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string TipoDocOrigem { get; set; }
+        [DFeElement(TipoCampo.Str, "c28_tipoDocOrigem")]
+        public string TipoDocOrigemV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c04_docOrigem", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string DocOrigem { get; set; }
+        [DFeElement(TipoCampo.Str, "c04_docOrigem")]
+        public string DocOrigemV1 { get; set; }
 
-        [DFeElement(TipoCampo.De2, "c06_valorPrincipal", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public decimal? ValorPrincipal { get; set; }
+        [DFeElement(TipoCampo.De2, "c06_valorPrincipal")]
+        public decimal? ValorPrincipalV1 { get; set; }
 
-        [DFeElement(TipoCampo.De2, "c07_atualizacaoMonetaria", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public decimal? AtualizacaoMonetaria { get; set; }
+        [DFeElement(TipoCampo.De2, "c07_atualizacaoMonetaria")]
+        public decimal? AtualizacaoMonetariaV1 { get; set; }
 
-        [DFeElement(TipoCampo.De2, "c08_juros", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public decimal? Juros { get; set; }
+        [DFeElement(TipoCampo.De2, "c08_juros")]
+        public decimal? JurosV1 { get; set; }
 
-        [DFeElement(TipoCampo.De2, "c09_multa", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public decimal? Multa { get; set; }
+        [DFeElement(TipoCampo.De2, "c09_multa")]
+        public decimal? MultaV1 { get; set; }
 
-        [DFeElement(TipoCampo.De2, "c10_valorTotal", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public decimal? ValorTotal2 { get; set; }
+        [DFeElement(TipoCampo.De2, "c10_valorTotal")]
+        public decimal? ValorTotal2V1 { get; set; }
 
-        [DFeElement(TipoCampo.Dat, "c14_dataVencimento", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public DateTime? DataVencimento { get; set; }
+        [DFeElement(TipoCampo.Dat, "c14_dataVencimento")]
+        public DateTime? DataVencimentoV1 { get; set; }
 
-        [DFeElement(TipoCampo.Dat, "c29_dataLimitePagamento", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public DateTime? DataLimitePagamento { get; set; }
+        [DFeElement(TipoCampo.Dat, "c29_dataLimitePagamento")]
+        public DateTime? DataLimitePagamentoV1 { get; set; }
         
-        [DFeElement(TipoCampo.Str, "c15_convenio", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string Convenio { get; set; }
+        [DFeElement(TipoCampo.Str, "c15_convenio")]
+        public string ConvenioV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c16_razaoSocialEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string RazaoSocialEmitente { get; set; }
+        [DFeElement(TipoCampo.Str, "c16_razaoSocialEmitente")]
+        public string RazaoSocialEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c17_inscricaoEstadualEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string InscricaoEstadualEmitente { get; set; }
+        [DFeElement(TipoCampo.Str, "c17_inscricaoEstadualEmitente")]
+        public string InscricaoEstadualEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c18_enderecoEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string EnderecoEmitente { get; set; }
+        [DFeElement(TipoCampo.Str, "c18_enderecoEmitente")]
+        public string EnderecoEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Long, "c19_municipioEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public long? MunicipioEmitente { get; set; }
+        [DFeElement(TipoCampo.Long, "c19_municipioEmitente")]
+        public long? MunicipioEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c20_ufEnderecoEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string UfEnderecoEmitente { get; set; }
+        [DFeElement(TipoCampo.Str, "c20_ufEnderecoEmitente")]
+        public string UfEnderecoEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c21_cepEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string CepEmitente { get; set; }
+        [DFeElement(TipoCampo.Str, "c21_cepEmitente")]
+        public string CepEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c22_telefoneEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string TelefoneEmitente { get; set; }
+        [DFeElement(TipoCampo.Str, "c22_telefoneEmitente")]
+        public string TelefoneEmitenteV1 { get; set; }
 
-        [DFeElement(TipoCampo.Int, "c34_tipoIdentificacaoDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public int? TipoIdentificacaoDestinatarioProxy
+        [DFeElement(TipoCampo.Int, "c34_tipoIdentificacaoDestinatario")]
+        public int? TipoIdentificacaoDestinatarioV1Proxy
         {
-            get => TipoIdentificacaoDestinatario.HasValue ? (int?)Convert.ToInt32(TipoIdentificacaoDestinatario) : null;
+            get => TipoIdentificacaoDestinatarioV1.HasValue ? (int?)Convert.ToInt32(TipoIdentificacaoDestinatarioV1) : null;
             set
             {
                 if (value.HasValue)
-                    TipoIdentificacaoDestinatario = (TipoIdentificacao)value.Value;
+                    TipoIdentificacaoDestinatarioV1 = (TipoIdentificacao)value.Value;
                 else
-                    TipoIdentificacaoDestinatario = null;
+                    TipoIdentificacaoDestinatarioV1 = null;
             }
         }
 
         [DFeIgnore]
-        public TipoIdentificacao? TipoIdentificacaoDestinatario { get; set; }
+        public TipoIdentificacao? TipoIdentificacaoDestinatarioV1 { get; set; }
 
-        [DFeElement("c35_idContribuinteDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public IdContribuinte IdContribuinteDestinatario { get; set; }
+        [DFeElement("c35_idContribuinteDestinatario")]
+        public IdContribuinte IdContribuinteDestinatarioV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c36_inscricaoEstadualDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string InscricaoEstadualDestinatario { get; set; }
+        [DFeElement(TipoCampo.Str, "c36_inscricaoEstadualDestinatario")]
+        public string InscricaoEstadualDestinatarioV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c37_razaoSocialDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string RazaoSocialDestinatario { get; set; }
+        [DFeElement(TipoCampo.Str, "c37_razaoSocialDestinatario")]
+        public string RazaoSocialDestinatarioV1 { get; set; }
 
-        [DFeElement(TipoCampo.Long, "c38_municipioDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public long? MunicipioDestinatario { get; set; }
+        [DFeElement(TipoCampo.Long, "c38_municipioDestinatario")]
+        public long? MunicipioDestinatarioV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c23_informacoes", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string Informacoes { get; set; }
+        [DFeElement(TipoCampo.Str, "c23_informacoes")]
+        public string InformacoesV1 { get; set; }
 
-        [DFeElement(TipoCampo.Str, "c30_nossoNumero", Ocorrencia = Ocorrencia.NaoObrigatoria)]
+        [DFeElement(TipoCampo.Str, "c30_nossoNumero")]
+        public string NossoNumeroV1 { get; set; }
+
+        [DFeElement(TipoCampo.Dat, "c33_dataPagamento")]
+        public DateTime? DataPagamentoV1 { get; set; }
+
+        [DFeElement("c05_referencia")]
+        public Referencia ReferenciaV1 { get; set; }
+
+        [DFeElement("c39_camposExtras")]
+        public CamposExtras CamposExtrasV1 { get; set; }
+
+        [DFeElement(TipoCampo.Str, "c42_identificadorGuia")]
+        public string IdentificadorGuiaV1 { get; set; }
+        #endregion Versao1
+
+        #region Versao2
+        [DFeElement(TipoCampo.Str, "ufFavorecida")]
+        public string UfFavorecidaV2 { get; set; }
+
+        [DFeIgnore]
+        public TipoGnre? TipoGnreV2 { get; set; }
+
+        [DFeElement(TipoCampo.Int, "tipoGnre")]
+        public int? TipoGnreV2Proxy
+        {
+            get => TipoGnreV2.HasValue ? Convert.ToInt32(TipoGnreV2.Value) : (int?)null;
+            set
+            {
+                if (value.HasValue)
+                    TipoGnreV2 = (TipoGnre)value.Value;
+                else
+                    TipoGnreV2 = null;
+            }
+        }
+
+        [DFeElement("contribuinteEmitente")]
+        public ContribuinteEmitente IdContribuinteEmitenteV2 { get; set; }
+
+        [DFeElement("itensGNRE")]
+        public ItensGnre ItensGnreV2 { get; set; }
+
+        [DFeElement(TipoCampo.De2, "valorGNRE")]
+        public decimal? ValorGnreV2 { get; set; }
+
+        [DFeElement(TipoCampo.Dat, "dataPagamento")]
+        public DateTime? DataPagamentoV2 { get; set; }
+
+        [DFeElement(TipoCampo.Str, "identificadorGuia")]
+        public string IdentificadorGuiaV2 { get; set; }
+        #endregion Versao2
+
+        [DFeElement(TipoCampo.Dat, "dataLimitePagamento")]
+        public DateTime? DataLimitePagamento { get; set; }
+
+        [DFeElement("informacoesComplementares")]
+        public InformacoesComplementares InformacoesComplementares { get; set; }
+
+        [DFeElement(TipoCampo.Str, "nossoNumero")]
         public string NossoNumero { get; set; }
 
-        [DFeElement(TipoCampo.Dat, "c33_dataPagamento", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public DateTime? DataPagamento { get; set; }
-
-        [DFeElement("c05_referencia", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public Referencia Referencia { get; set; }
-
-        [DFeElement("c39_camposExtras", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public CamposExtras CamposExtras { get; set; }
-
-        [DFeElement(TipoCampo.Str, "c42_identificadorGuia", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public string IdentificadorGuia { get; set; }
-
-        [DFeElement(TipoCampo.Str, "representacaoNumerica")]
-        public string RepresentacaoNumerica { get; set; }
+        #region ResultadoGuia
+        [DFeElement(TipoCampo.Str, "linhaDigitavel")]
+        public string LinhaDigitavel { get; set; }
 
         [DFeElement(TipoCampo.Str, "codigoBarras")]
         public string CodigoBarras { get; set; }
 
-        [DFeElement(TipoCampo.Str, "linhaDigitavel")]
-        public string LinhaDigitavel { get; set; }
-
         [DFeCollection("motivosRejeicao")]
         public List<Motivo> MotivosRejeicao { get; set; }
-
+        #endregion
     }
 }

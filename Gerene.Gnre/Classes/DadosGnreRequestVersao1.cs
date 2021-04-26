@@ -5,29 +5,18 @@ using System;
 
 namespace Gerene.Gnre.Classes
 {
-    public sealed class DadosGnreRequest : DFeDocument<DadosGnreRequest>
+    public sealed class DadosGnreRequestVersao1 : DFeDocument<DadosGnreRequestVersao1>
     {
-        public DadosGnreRequest(VersaoDados versao) : this()
-        {
-            switch (versao)
-            {
-                case VersaoDados.Versao1:
-                    Versao = "1.00";
-                    break;
-                case VersaoDados.Versao2:
-                    Versao = "2.00";
-                    break;
-                default:
-                    throw new NotImplementedException($"Versão {versao} não implementada");
-            }
-        }
-
-        internal DadosGnreRequest()
+        public DadosGnreRequestVersao1() 
         {
         }
 
         [DFeAttribute(TipoCampo.Str, "versao", Ocorrencia = Ocorrencia.Obrigatoria)]
-        public string Versao { get; internal set; }
+        public string Versao
+        {
+            get => "1.00";
+            set { }
+        }
 
         [DFeElement(TipoCampo.Str, "c01_UfFavorecida", Ocorrencia = Ocorrencia.Obrigatoria, Ordem = 1)]
         public string UfFavorecida { get; set; }

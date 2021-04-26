@@ -71,4 +71,11 @@ namespace Gerene.Gnre.Classes
         D
     }
 
+    public enum TipoGnre
+    {
+        GnreSimples = 0,
+        GnreMultiplosDoctos = 1,
+        GnreMultiplasReceitas = 2
+    }
+
 }

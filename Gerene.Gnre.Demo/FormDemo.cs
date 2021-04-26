@@ -84,7 +84,7 @@ namespace Gerene.Gnre.Demo
             };
 
             //Substitua os dados para realizar o teste
-            var dados = new DadosGnreRequest(VersaoDados.Versao1) //Até o momento só foi implmentado o envio na versão 1.00
+            var dados = new DadosGnreRequestVersao1()
             {
                 UfFavorecida = "XX",
                 Receita = "100102", //100102 - Difal, 100129 - Fcp
@@ -103,7 +103,7 @@ namespace Gerene.Gnre.Demo
                 DataPagamento = DateTime.Today
             };
             
-            request.Guias.DadosGnre.Add(dados);
+            request.Guias.DadosGnreVersao1.Add(dados);
 
             var client = GetClient();
 

@@ -34,11 +34,13 @@ namespace Gerene.Gnre.WebService
         {
             Configuracao = configuracao;
 
+            (Endpoint.Binding as BasicHttpBinding).MaxReceivedMessageSize = int.MaxValue; //alguns métodos como buscarServios tem retornos muito grande
             var custom = new CustomBinding(Endpoint.Binding);
+
             var version = custom.Elements.Find<TextMessageEncodingBindingElement>();
             version.MessageVersion = MessageVersion.CreateVersion(EnvelopeVersion.Soap12, AddressingVersion.None);
-
-            Endpoint.Binding = custom;
+            
+            Endpoint.Binding = custom;            
         }
 
         private Message WriteSoapEnvelope(string message, string _namespace, VersaoDados versao, string soapAction)

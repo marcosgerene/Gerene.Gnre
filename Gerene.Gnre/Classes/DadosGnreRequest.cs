@@ -196,7 +196,7 @@ namespace Gerene.Gnre.Classes
         public bool ShouldSerializeTipoGnreProxy() => Versao == versao2;
 
         [DFeElement("contribuinteEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 3)]
-        public ContribuinteEmitente IdContribuinteEmitente { get; set; }
+        public ContribuinteEmitente ContribuinteEmitente { get; set; }
         public bool ShouldSerializeIdContribuinteEmitente() => Versao == versao2;
 
         [DFeElement("itensGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]

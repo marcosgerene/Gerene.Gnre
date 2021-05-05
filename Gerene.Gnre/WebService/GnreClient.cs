@@ -142,7 +142,7 @@ namespace Gerene.Gnre.WebService
                 Ambiente = ConfiguracaoWebService.Ambiente,
                 Uf = uf,
                 Receita = receita,
-                //Courier = courier
+                Courier = courier
             };
 
             ConsultaConfigUfResult resposta = null;

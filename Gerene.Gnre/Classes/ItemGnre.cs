@@ -16,7 +16,8 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "documentoOrigem", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 3)]
         public string DocumentoOrigem { get; set; }
 
-        //atributo tipo documentoOrigem
+        [DFeAttribute(TipoCampo.Str, "tipo", Ocorrencia = Ocorrencia.NaoObrigatoria, ElementName = "documentoOrigem")]
+        public string DocumentoOrigemTipo { get; set; }
 
         [DFeElement(TipoCampo.Str, "produto", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
         public string Produto { get; set; }
@@ -30,7 +31,8 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.De2, "valor", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 7)]
         public decimal? Valor { get; set; }
 
-        //atributo tipo valor
+        [DFeAttribute(TipoCampo.Str, "tipo", Ocorrencia = Ocorrencia.NaoObrigatoria, ElementName = "valor")]
+        public string ValorTipo { get; set; }
 
         [DFeElement(TipoCampo.Str, "convenio", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 8)]
         public string Convenio { get; set; }
@@ -47,7 +49,7 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "numeroControleFecp", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 12)]
         public string NumeroControleFecp { get; set; }
 
-        
+
 
     }
 }

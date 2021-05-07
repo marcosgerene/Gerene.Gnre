@@ -8,15 +8,8 @@ namespace Gerene.Gnre.Classes
     [DFeRoot("TResultLote_GNRE")]
     public sealed class ConsultarLoteResult : DFeDocument<ConsultarLoteResult>
     {
-        [DFeIgnore]
+        [DFeElement(TipoCampo.Enum, "ambiente")]
         public TipoAmbiente Ambiente { get; set; }
-
-        [DFeElement(TipoCampo.Int, "ambiente")]
-        public int AmbienteProxy
-        {
-            get => Convert.ToInt32(Ambiente);
-            set => Ambiente = (TipoAmbiente)value;
-        }
 
         [DFeElement("situacaoProcess")]
         public Situacao SituacaoProcess { get; set; }

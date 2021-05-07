@@ -2,9 +2,21 @@
 using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace Gerene.Gnre.Classes
 {
+    public class DecimalCampo : DFeDocument<DecimalCampo>
+    {
+        [DFeItemValue]
+        public decimal Value { get; set; }
+
+        [DFeAttribute(TipoCampo.Str, "tipo")]
+        public string Tipo { get; set; }
+    }
+
     public sealed class ItemGnre : DFeDocument<ItemGnre>
     {
         [DFeElement(TipoCampo.Str, "receita", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 1)]
@@ -14,10 +26,7 @@ namespace Gerene.Gnre.Classes
         public string DetalhamentoReceita { get; set; }
 
         [DFeElement(TipoCampo.Str, "documentoOrigem", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 3)]
-        public string DocumentoOrigem { get; set; }
-
-        [DFeAttribute(TipoCampo.Str, "tipo", Ocorrencia = Ocorrencia.NaoObrigatoria, ElementName = "documentoOrigem")]
-        public string DocumentoOrigemTipo { get; set; }
+        public DocumentoOrigem DocumentoOrigem { get; set; }
 
         [DFeElement(TipoCampo.Str, "produto", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
         public string Produto { get; set; }
@@ -28,11 +37,8 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Dat, "dataVencimento", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 6)]
         public DateTime? DataVencimento { get; set; }
 
-        [DFeElement(TipoCampo.De2, "valor", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 7)]
-        public decimal? Valor { get; set; }
-
-        [DFeAttribute(TipoCampo.Str, "tipo", Ocorrencia = Ocorrencia.NaoObrigatoria, ElementName = "valor")]
-        public string ValorTipo { get; set; }
+        [DFeCollection("valor", Tipo = TipoCampo.De2, Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 7)]
+        public List<DecimalCampo> Valor { get; set; }
 
         [DFeElement(TipoCampo.Str, "convenio", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 8)]
         public string Convenio { get; set; }
@@ -48,8 +54,5 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement(TipoCampo.Str, "numeroControleFecp", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 12)]
         public string NumeroControleFecp { get; set; }
-
-
-
     }
 }

@@ -87,11 +87,85 @@ namespace Gerene.Gnre.Demo
             var dados = new DadosGnreRequest()
             {
                 Versao = "2.00", //"1.00"
-                /*
-                 Atributos da versão selecionada
-                 */
+
+                /* Atributos da versão selecionada */
+
+                UfFavorecida = "RJ",
+                TipoGnre = TipoGnre.GnreSimples,
+                ContribuinteEmitente = new ContribuinteEmitente()
+                {
+                    IdContribuinteEmitente = new IdContribuinte()
+                    {
+                        Cnpj = "00000000000000",
+                    },
+                    RazaoSocial = "Razão Social do Emitente",
+                    Endereco = "Rua de Teste, número 0",
+                    Municipio = 14106,
+                    Uf = "SP",
+                    Cep = "17300000"
+                },
+
+                ItensGnre = new ItensGnre()
+                {
+                    Item = new List<ItemGnre>()
+                    {
+                        new ItemGnre()
+                        {
+                            Receita = "100102",
+
+                            DocumentoOrigem = new DocumentoOrigem()
+                            {
+                                Tipo = "24",
+                                Value = "00000000000000000000000000000000000000000000", 
+                            },
+                            DataVencimento = DateTime.Today,
+
+                            Valor = new List<DecimalCampo>()
+                            {
+                               new DecimalCampo()
+                               {
+                                   Value = 25.00M,
+                                   Tipo = "11"
+                               },
+                               new DecimalCampo()
+                               {
+                                   Value = 15.00M,
+                                   Tipo = "12"
+                               }
+                            },
+
+                            //Valor = new List<decimal>() { 25.00M, 15.00M },
+                            //ValorTipo = new List<string>() { "11", "12" },
+
+                            ContribuinteDestinatario = new ContribuinteDestinatario()
+                            {
+                                IdContribuinteEmitente  =new IdContribuinte()
+                                {
+                                    Cpf = "00000000000"
+                                },
+                                RazaoSocial = "Destinatário Teste",
+                                Municipio = 00209
+                            },
+
+                            CamposExtras = new CamposExtras2()
+                            {
+                                CampoExtra = new List<CampoExtra2>()
+                                {
+                                    new CampoExtra2()
+                                    {
+                                        Codigo = 117,
+                                        Valor = DateTime.Today.ToString("yyyy-MM-dd")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+
+                ValorGnre = 40.00M,
+                DataPagamento = DateTime.Today
             };
-            
+
             request.Guias.DadosGnre.Add(dados);
 
             var client = GetClient();
@@ -120,7 +194,7 @@ namespace Gerene.Gnre.Demo
 
             string incluirPdf = "sim";
             incluirPdf = InputBox("Incluir Pdf?", incluirPdf);
-            
+
             var client = GetClient();
 
             try

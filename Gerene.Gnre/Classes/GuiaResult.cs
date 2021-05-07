@@ -7,16 +7,9 @@ using System.Collections.Generic;
 namespace Gerene.Gnre.Classes
 {
     public sealed class GuiaResult : DFeDocument<GuiaResult>
-    {
-        [DFeIgnore]
+    {        
+        [DFeElement(TipoCampo.Enum, "situacaoGuia")]
         public SituacaoGuia SituacaoGuia { get; set; }
-
-        [DFeElement(TipoCampo.Int, "situacaoGuia")]
-        public int SituacaoGuiaProxy
-        {
-            get => Convert.ToInt32(SituacaoGuia);
-            set => SituacaoGuia = (SituacaoGuia)value;
-        }
 
         #region Dados Versao1
         [DFeElement(TipoCampo.Str, "c01_UfFavorecida")]

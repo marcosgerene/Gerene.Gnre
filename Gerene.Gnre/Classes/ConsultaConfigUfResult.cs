@@ -6,18 +6,20 @@ using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
+    public sealed class ExigeCampo
+    {
+        [DFeItemValue]
+        public SimNao? Value { get; set; }
+
+        [DFeAttribute(TipoCampo.Str, "campo")]
+        public string Campo { get; set; }
+    }
+
     [DFeRoot("TConfigUf", Namespace = "http://www.gnre.pe.gov.br")]
     public sealed class ConsultaConfigUfResult : DFeDocument<ConsultaConfigUfResult>
     {
-        [DFeIgnore]
+        [DFeElement(TipoCampo.Enum, "ambiente")]
         public TipoAmbiente Ambiente { get; set; }
-
-        [DFeElement(TipoCampo.Int, "ambiente")]
-        public int AmbienteProxy
-        {
-            get => Convert.ToInt32(Ambiente);
-            set => Ambiente = (TipoAmbiente)value;
-        }
 
         [DFeElement(TipoCampo.Str, "uf")]
         public string Uf { get; set; }
@@ -25,16 +27,12 @@ namespace Gerene.Gnre.Classes
         [DFeElement("situacaoConsulta")]
         public Situacao SituacaoConsulta { get; set; }
 
-        [DFeAttribute(TipoCampo.Enum, "exigeUfFavorecida", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public SimNao? ExigeUfFavorecida { get; set; }
-
-        //campo em exigeUfFavorecida
+        [DFeElement(TipoCampo.Enum, "exigeUfFavorecida", Ocorrencia = Ocorrencia.NaoObrigatoria)]
+        public ExigeCampo ExigeUfFavorecida { get; set; }
 
         [DFeAttribute(TipoCampo.Enum, "exigeReceita", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public SimNao? ExigeReceita { get; set; }
-
-        //campo em exigeReceita 
-
+        public ExigeCampo ExigeReceita { get; set; }
+     
         [DFeElement("receitas")]
         public Receitas Receitas { get; set; }
 

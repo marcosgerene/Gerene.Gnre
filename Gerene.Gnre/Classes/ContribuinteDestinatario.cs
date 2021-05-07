@@ -12,7 +12,7 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "razaoSocial", Ordem = 2)]
         public string RazaoSocial { get; set; }
 
-        [DFeElement(TipoCampo.Long, "municipio", Ordem = 3)]
+        [DFeElement(TipoCampo.Long, "municipio", Ordem = 3, Min = 5, Max = 5)]
         public long? Municipio { get; set; }
     }
 }

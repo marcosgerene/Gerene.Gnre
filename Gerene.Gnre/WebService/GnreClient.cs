@@ -141,8 +141,11 @@ namespace Gerene.Gnre.WebService
             {
                 Ambiente = ConfiguracaoWebService.Ambiente,
                 Uf = uf,
-                Receita = receita,
-                Courier = courier
+                Receita = new ReceitaValue()
+                { 
+                    Value = receita, 
+                    Courier = courier 
+                }
             };
 
             ConsultaConfigUfResult resposta = null;

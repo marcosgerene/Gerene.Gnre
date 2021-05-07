@@ -15,7 +15,7 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "endereco", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 3)]
         public string Endereco { get; set; }
 
-        [DFeElement(TipoCampo.Long, "municipio", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
+        [DFeElement(TipoCampo.Long, "municipio", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4, Min = 5, Max = 5)]
         public long? Municipio { get; set; }
 
         [DFeElement(TipoCampo.Str, "uf", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 5)]

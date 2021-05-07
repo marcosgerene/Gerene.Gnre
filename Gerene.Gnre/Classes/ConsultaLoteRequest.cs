@@ -10,15 +10,8 @@ namespace Gerene.Gnre.Classes
     [DFeRoot("TConsLote_GNRE", Namespace = "http://www.gnre.pe.gov.br")]
     public sealed class ConsultaLoteRequest : DFeDocument<ConsultaLoteRequest>
     {
-        [DFeIgnore]
+        [DFeElement(TipoCampo.Enum, "ambiente")]
         public TipoAmbiente Ambiente { get; set; }
-
-        [DFeElement(TipoCampo.Int, "ambiente")]
-        public int AmbienteProxy
-        {
-            get => Convert.ToInt32(Ambiente);
-            set => Ambiente = (TipoAmbiente)value;
-        }
 
         [DFeElement(TipoCampo.Str, "numeroRecibo")]
         public string NumeroRecibo { get; set; }

@@ -6,6 +6,12 @@ using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
+    public sealed class ItensGnre : DFeDocument<ItensGnre>
+    {
+        [DFeCollection("item")]
+        public List<ItemGnre> Item { get; set; }
+    }
+
     /// <summary>
     /// Dados do Gnre para a versão 1.00 e 2.00.     
     /// </summary>
@@ -149,9 +155,8 @@ namespace Gerene.Gnre.Classes
         public ContribuinteEmitente ContribuinteEmitente { get; set; }
         public bool ShouldSerializeIdContribuinteEmitente() => Versao == versao2;
 
-        [DFeCollection("itensGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
-        [DFeItem(typeof(ItemGnre), "item")]
-        public List<ItemGnre> ItensGnre { get; set; }
+        [DFeElement("itensGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
+        public ItensGnre ItensGnre { get; set; }
         public bool ShouldSerializeItensGnre() => Versao == versao2;
 
         [DFeElement(TipoCampo.De2, "valorGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 5)]

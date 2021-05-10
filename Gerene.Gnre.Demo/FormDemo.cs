@@ -105,49 +105,52 @@ namespace Gerene.Gnre.Demo
                     Cep = "17300000"
                 },
 
-                ItensGnre = new List<ItemGnre>()
+                ItensGnre = new ItensGnre()
                 {
-                    new ItemGnre()
+                    Item = new List<ItemGnre>()
                     {
-                        Receita = "100102",
-
-                        DocumentoOrigem = new StringTipo()
+                        new ItemGnre()
                         {
-                            Tipo = "24",
-                            Value = "00000000000000000000000000000000000000000000",
-                        },
-                        DataVencimento = DateTime.Today,
+                            Receita = "100102",
 
-                        Valor = new List<DecimalCampo>()
-                        {
-                            new DecimalCampo()
+                            DocumentoOrigem = new StringTipo()
                             {
-                                Value = 25.00M,
-                                Tipo = "11"
+                                Tipo = "24",
+                                 Value = "00000000000000000000000000000000000000000000",
                             },
-                            new DecimalCampo()
-                            {
-                                Value = 15.00M,
-                                Tipo = "12"
-                            }
-                        },
+                            DataVencimento = DateTime.Today,
 
-                        ContribuinteDestinatario = new ContribuinteDestinatario()
-                        {
-                            IdContribuinteEmitente  =new IdContribuinte()
+                            Valor = new List<DecimalCampo>()
                             {
-                                Cpf = "00000000000"
+                                new DecimalCampo()
+                                {
+                                    Value = 25.00M,
+                                    Tipo = "11"
+                                },
+                                new DecimalCampo()
+                                {
+                                    Value = 15.00M,
+                                    Tipo = "12"
+                                }
                             },
-                            RazaoSocial = "Destinatário Teste",
-                            Municipio = 00209
-                        },
 
-                        CamposExtras = new List<CampoExtra2>()
-                        {
-                            new CampoExtra2()
+                            ContribuinteDestinatario = new ContribuinteDestinatario()
                             {
-                                Codigo = 117,
-                                Valor = DateTime.Today.ToString("yyyy-MM-dd")
+                                IdContribuinteEmitente  =new IdContribuinte()
+                                {
+                                    Cpf = "00000000000"
+                                },
+                                RazaoSocial = "Destinatário Teste",
+                                Municipio = 00209
+                            },
+
+                            CamposExtras = new List<CampoExtra2>()
+                            {
+                                new CampoExtra2()
+                                {
+                                    Codigo = 117,
+                                    Valor = DateTime.Today.ToString("yyyy-MM-dd")
+                                }
                             }
                         }
                     }

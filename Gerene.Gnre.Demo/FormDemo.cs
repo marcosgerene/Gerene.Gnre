@@ -80,7 +80,7 @@ namespace Gerene.Gnre.Demo
             var request = new LoteGnreRequest()
             {
                 Versao = "2.00",
-                Guias = new List<DadosGnreRequest>()
+                Guias = new GuiasRequest()
             };
 
             //Substitua os dados para realizar o teste
@@ -157,7 +157,7 @@ namespace Gerene.Gnre.Demo
                 DataPagamento = DateTime.Today
             };
 
-            request.Guias.Add(dados);
+            request.Guias.DadosGnre.Add(dados);
 
             var client = GetClient();
 

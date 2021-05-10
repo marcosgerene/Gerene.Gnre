@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
-    public sealed class ExigeCampo
+    public sealed class SimNaoCampo
     {
-        [DFeItemValue]
+        [DFeItemValue(Tipo = TipoCampo.Enum)]
         public SimNao? Value { get; set; }
 
         [DFeAttribute(TipoCampo.Str, "campo")]
@@ -28,22 +28,24 @@ namespace Gerene.Gnre.Classes
         public Situacao SituacaoConsulta { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeUfFavorecida", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeUfFavorecida { get; set; }
+        public SimNaoCampo ExigeUfFavorecida { get; set; }
 
         [DFeAttribute(TipoCampo.Enum, "exigeReceita", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeReceita { get; set; }
-     
-        [DFeElement("receitas")]
-        public Receitas Receitas { get; set; }
+        public SimNaoCampo ExigeReceita { get; set; }
 
-        [DFeElement("versoesXml")]
-        public VersoesXml VersoesXml { get; set; }
+        [DFeCollection("receitas")]
+        [DFeItem(typeof(Receita), "receita")]
+        public List<Receita> Receitas { get; set; }
+
+        [DFeCollection("versoesXml")]
+        [DFeItem(typeof(VersaoXml), "versao")]
+        public List<VersaoXml> VersoesXml { get; set; }
 
         public ConsultaConfigUfResult()
         {
             SituacaoConsulta = new Situacao();
-            Receitas = new Receitas();
-            VersoesXml = new VersoesXml();
+            Receitas = new List<Receita>();
+            VersoesXml = new List<VersaoXml>();
         }
     }
 }

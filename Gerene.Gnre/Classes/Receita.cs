@@ -1,12 +1,13 @@
 ﻿using ACBr.Net.DFe.Core.Attributes;
 using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
+using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
     public sealed class StringCampo2_00
     {
-        [DFeItemValue]
+        [DFeItemValue(Tipo = TipoCampo.Str)]
         public string Value { get; set; }
 
         [DFeAttribute(TipoCampo.Str, "campo")]
@@ -18,7 +19,7 @@ namespace Gerene.Gnre.Classes
 
     public sealed class ExigeCampo2_00
     {
-        [DFeItemValue]
+        [DFeItemValue(Tipo = TipoCampo.Enum)]
         public SimNao? Value { get; set; }
 
         [DFeAttribute(TipoCampo.Str, "campo")]
@@ -30,7 +31,7 @@ namespace Gerene.Gnre.Classes
 
     public sealed class ValorExigidoCampo
     {
-        [DFeItemValue]
+        [DFeItemValue(Tipo = TipoCampo.Enum)]
         public ValorExigido? Value { get; set; }
 
         [DFeAttribute(TipoCampo.Str, "campo")]
@@ -54,26 +55,29 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Enum, "exigeDetalhamentoReceita", Ocorrencia = Ocorrencia.NaoObrigatoria)]
         public ExigeCampo2_00 ExigeDetalhamentoReceita { get; set; }
 
-        [DFeElement("detalhamentosReceita")]
-        public DetalhamentosReceita DetalhamentosReceita { get; set; }
+        [DFeCollection("detalhamentosReceita")]
+        [DFeItem(typeof(DetalhamentoReceita), "detalhamentoReceita")]
+        public List<DetalhamentoReceita> DetalhamentosReceita { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeProduto", Ocorrencia = Ocorrencia.NaoObrigatoria)]
         public ExigeCampo2_00 ExigeProduto { get; set; }
 
-        [DFeElement("produtos")]
-        public Produtos Produtos { get; set; }
+        [DFeCollection("produtos")]
+        [DFeItem(typeof(Produto),"produto")]
+        public List<Produto> Produtos { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigePeriodoReferencia", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigePeriodoReferencia { get; set; }
+        public SimNaoCampo ExigePeriodoReferencia { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigePeriodoApuracao", Ocorrencia = Ocorrencia.NaoObrigatoria)]
         public ExigeCampo2_00 ExigePeriodoApuracao { get; set; }
 
-        [DFeElement("periodosApuracao")]
-        public PeriodosApuracao PeriodosApuracao { get; set; }
+        [DFeCollection("periodosApuracao")]
+        [DFeItem(typeof(PeriodoApuracao), "periodoApuracao")]
+        public List<PeriodoApuracao> PeriodosApuracao { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeParcela", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeParcela { get; set; }
+        public SimNaoCampo ExigeParcela { get; set; }
 
         [DFeElement(TipoCampo.Enum, "valorExigido", Ocorrencia = Ocorrencia.NaoObrigatoria)]
         public ValorExigidoCampo ValorExigido { get; set; }
@@ -84,38 +88,40 @@ namespace Gerene.Gnre.Classes
         [DFeElement("tiposDocumentosOrigem")]
         public TiposDocumentosOrigem TiposDocumentosOrigem { get; set; }
         
-        [DFeElement("versoesXmlDocOrigem")]
-        public VersoesXml VersoesXmlDocOrigem { get; set; }
+        [DFeCollection("versoesXmlDocOrigem")]
+        [DFeItem(typeof(VersaoXml), "versao")]
+        public List<VersaoXml> VersoesXmlDocOrigem { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeContribuinteDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria)]
         public SimNao? ExigeContribuinteDestinatario { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeDataVencimento", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeDataVencimento { get; set; }
+        public SimNaoCampo ExigeDataVencimento { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeDataPagamento", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeDataPagamento { get; set; }
+        public SimNaoCampo ExigeDataPagamento { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeConvenio", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeConvenio { get; set; }
+        public SimNaoCampo ExigeConvenio { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeValorFecp", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeValorFecp { get; set; }
+        public SimNaoCampo ExigeValorFecp { get; set; }
 
         [DFeElement(TipoCampo.Enum, "exigeCamposAdicionais", Ocorrencia = Ocorrencia.NaoObrigatoria)]
-        public ExigeCampo ExigeCamposAdicionais { get; set; }
+        public SimNaoCampo ExigeCamposAdicionais { get; set; }
 
-        [DFeElement("camposAdicionais")]
-        public CamposAdicionais CamposAdicionais { get; set; }
+        [DFeCollection("camposAdicionais")]
+        [DFeItem(typeof(CampoAdicional), "campoAdicional")]
+        public List<CampoAdicional> CamposAdicionais { get; set; }
 
         public Receita()
         {
-            DetalhamentosReceita = new DetalhamentosReceita();
-            Produtos = new Produtos();
-            PeriodosApuracao = new PeriodosApuracao();
+            DetalhamentosReceita = new List<DetalhamentoReceita>();
+            Produtos = new List<Produto>();
+            PeriodosApuracao = new List<PeriodoApuracao>();
             TiposDocumentosOrigem = new TiposDocumentosOrigem();
-            VersoesXmlDocOrigem = new VersoesXml();
-            CamposAdicionais = new CamposAdicionais();
+            VersoesXmlDocOrigem = new List<VersaoXml>();
+            CamposAdicionais = new List<CampoAdicional>();
         }
     }
 }

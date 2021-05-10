@@ -2,6 +2,7 @@
 using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
 using System;
+using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
@@ -23,70 +24,46 @@ namespace Gerene.Gnre.Classes
         #region Versao1
         [DFeElement(TipoCampo.Str, "c01_UfFavorecida", Ocorrencia = Ocorrencia.Obrigatoria, Ordem = 1)]
         public string UfFavorecidaV1 { get; set; }
-
         public bool ShouldSerializeUfFavorecidaV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Str, "c02_receita", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 2)]
         public string ReceitaV1 { get; set; }
-
         public bool ShouldSerializeReceitaV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Str, "c25_detalhamentoReceita", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 3)]
         public string DetalhamentoReceitaV1 { get; set; }
-
         public bool ShouldSerializeDetalhamentoReceitaV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Str, "c26_produto", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
         public string ProdutoV1 { get; set; }
-
         public bool ShouldSerializeProdutoV1() => Versao == versao1;
 
-        [DFeElement(TipoCampo.Int, "c27_tipoIdentificacaoEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 5)]
-        public int? TipoIdentificacaoEmitenteV1Proxy
-        {
-            get => TipoIdentificacaoEmitenteV1.HasValue ? (int?)Convert.ToInt32(TipoIdentificacaoEmitenteV1) : null;
-            set
-            {
-                if (value.HasValue)
-                    TipoIdentificacaoEmitenteV1 = (TipoIdentificacao)value.Value;
-                else
-                    TipoIdentificacaoEmitenteV1 = null;
-            }
-        }
-
-        public bool ShouldSerializeTipoIdentificacaoEmitenteV1Proxy() => Versao == versao1;
-
-        [DFeIgnore]
+        [DFeElement(TipoCampo.Enum, "c27_tipoIdentificacaoEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 5)]
         public TipoIdentificacao? TipoIdentificacaoEmitenteV1 { get; set; }
-
-        public bool ShouldSerializeTipoIdentificacaoEmitenteV1() => false;
+        public bool ShouldSerializeTipoIdentificacaoEmitenteV1() => Versao == versao1;
 
         [DFeElement("c03_idContribuinteEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 6)]
         public IdContribuinte IdContribuinteEmitenteV1 { get; set; }
-
         public bool ShouldSerializeIdContribuinteEmitenteV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Str, "c28_tipoDocOrigem", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 7)]
         public string TipoDocOrigemV1 { get; set; }
+        public bool ShouldSerializeTipoDocOrigemV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Str, "c04_docOrigem", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 8)]
         public string DocOrigemV1 { get; set; }
-
         public bool ShouldSerializeDocOrigemV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.De2, "c06_valorPrincipal", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 9)]
         public decimal? ValorPrincipalV1 { get; set; }
-
         public bool ShouldSerializeValorPrincipalV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.De2, "c10_valorTotal", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 10)]
         public decimal? ValorTotalV1 { get; set; }
-
         public bool ShouldSerializeValorTotalV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Dat, "c14_dataVencimento", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 11)]
         public DateTime? DataVencimentoV1 { get; set; }
-
         public bool ShouldSerializeDataVencimentoV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Str, "c15_convenio", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 12)]
@@ -121,23 +98,9 @@ namespace Gerene.Gnre.Classes
         public string TelefoneEmitenteV1 { get; set; }
         public bool ShouldSerializeTelefoneEmitenteV1() => Versao == versao1;
 
-        [DFeElement(TipoCampo.Int, "c34_tipoIdentificacaoDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 20)]
-        public int? TipoIdentificacaoDestinatarioV1Proxy
-        {
-            get => TipoIdentificacaoDestinatarioV1.HasValue ? (int?)Convert.ToInt32(TipoIdentificacaoDestinatarioV1) : null;
-            set
-            {
-                if (value.HasValue)
-                    TipoIdentificacaoDestinatarioV1 = (TipoIdentificacao)value.Value;
-                else
-                    TipoIdentificacaoDestinatarioV1 = null;
-            }
-        }
-        public bool ShouldSerializeTipoIdentificacaoDestinatarioV1Proxy() => Versao == versao1;
-
-        [DFeIgnore]
+        [DFeElement(TipoCampo.Enum, "c34_tipoIdentificacaoDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 20)]
         public TipoIdentificacao? TipoIdentificacaoDestinatarioV1 { get; set; }
-        public bool ShouldSerializeTipoIdentificacaoDestinatarioV1() => false;
+        public bool ShouldSerializeTipoIdentificacaoDestinatarioV1() => Versao == versao1 && TipoIdentificacaoDestinatarioV1 != null;
 
         [DFeElement("c35_idContribuinteDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 21)]
         public IdContribuinte IdContribuinteDestinatarioV1 { get; set; }
@@ -163,8 +126,9 @@ namespace Gerene.Gnre.Classes
         public Referencia ReferenciaV1 { get; set; }
         public bool ShouldSerializeReferenciaV1() => Versao == versao1;
 
-        [DFeElement("c39_camposExtras", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 27)]
-        public CamposExtras CamposExtrasV1 { get; set; }
+        [DFeCollection("c39_camposExtras", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 27)]
+        [DFeItem(typeof(CampoExtra), "campoExtra")]
+        public List<CampoExtra> CamposExtrasV1 { get; set; }
         public bool ShouldSerializeCamposExtrasV1() => Versao == versao1;
 
         [DFeElement(TipoCampo.Str, "c42_identificadorGuia", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 28)]
@@ -177,30 +141,17 @@ namespace Gerene.Gnre.Classes
         public string UfFavorecida { get; set; }
         public bool ShouldSerializeUfFavorecida() => Versao == versao2;
 
-        [DFeIgnore]
+        [DFeElement(TipoCampo.Enum, "tipoGnre", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 2)]
         public TipoGnre? TipoGnre { get; set; }
-        public bool ShouldSerializeTipoGnre() => false;
-
-        [DFeElement(TipoCampo.Int, "tipoGnre", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 2)]
-        public int? TipoGnreProxy
-        {
-            get => TipoGnre.HasValue ? Convert.ToInt32(TipoGnre.Value) : (int?)null;
-            set
-            {
-                if (value.HasValue)
-                    TipoGnre = (TipoGnre)value.Value;
-                else
-                    TipoGnre = null;
-            }
-        }
-        public bool ShouldSerializeTipoGnreProxy() => Versao == versao2;
+        public bool ShouldSerializeTipoGnre() => Versao == versao2 && TipoGnre != null;
 
         [DFeElement("contribuinteEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 3)]
         public ContribuinteEmitente ContribuinteEmitente { get; set; }
         public bool ShouldSerializeIdContribuinteEmitente() => Versao == versao2;
 
-        [DFeElement("itensGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
-        public ItensGnre ItensGnre { get; set; }
+        [DFeCollection("itensGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
+        [DFeItem(typeof(ItemGnre), "item")]
+        public List<ItemGnre> ItensGnre { get; set; }
         public bool ShouldSerializeItensGnre() => Versao == versao2;
 
         [DFeElement(TipoCampo.De2, "valorGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 5)]
@@ -215,7 +166,6 @@ namespace Gerene.Gnre.Classes
         public string IdentificadorGuia { get; set; }
         public bool ShouldSerializeIdentificadorGuia() => Versao == versao2;
         #endregion
-
     }
 
 }

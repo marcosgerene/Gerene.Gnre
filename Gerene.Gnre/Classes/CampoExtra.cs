@@ -1,10 +1,9 @@
 ﻿using ACBr.Net.DFe.Core.Attributes;
-using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
 
 namespace Gerene.Gnre.Classes
 {
-    public sealed class CampoExtra : DFeDocument<CampoExtra>
+    public sealed class CampoExtra
     {
         [DFeElement(TipoCampo.Int, "codigo")]
         public int Codigo { get; set; }

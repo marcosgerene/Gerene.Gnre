@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Gerene.Gnre.Classes
 {
     public sealed class GuiaResult : DFeDocument<GuiaResult>
-    {        
+    {
         [DFeElement(TipoCampo.Enum, "situacaoGuia")]
         public SituacaoGuia SituacaoGuia { get; set; }
 
@@ -69,7 +69,7 @@ namespace Gerene.Gnre.Classes
 
         [DFeElement(TipoCampo.Dat, "c29_dataLimitePagamento")]
         public DateTime? DataLimitePagamentoV1 { get; set; }
-        
+
         [DFeElement(TipoCampo.Str, "c15_convenio")]
         public string ConvenioV1 { get; set; }
 
@@ -134,8 +134,9 @@ namespace Gerene.Gnre.Classes
         [DFeElement("c05_referencia")]
         public Referencia ReferenciaV1 { get; set; }
 
-        [DFeElement("c39_camposExtras")]
-        public CamposExtras CamposExtrasV1 { get; set; }
+        [DFeCollection("c39_camposExtras")]
+        [DFeItem(typeof(CampoExtra), "campoExtra")]
+        public List<CampoExtra> CamposExtrasV1 { get; set; }
 
         [DFeElement(TipoCampo.Str, "c42_identificadorGuia")]
         public string IdentificadorGuiaV1 { get; set; }
@@ -164,8 +165,9 @@ namespace Gerene.Gnre.Classes
         [DFeElement("contribuinteEmitente")]
         public ContribuinteEmitente IdContribuinteEmitenteV2 { get; set; }
 
-        [DFeElement("itensGNRE")]
-        public ItensGnre ItensGnreV2 { get; set; }
+        [DFeCollection("itensGNRE")]
+        [DFeItem(typeof(ItemGnre), "item")]
+        public List<ItemGnre> ItensGnreV2 { get; set; }
 
         [DFeElement(TipoCampo.De2, "valorGNRE")]
         public decimal? ValorGnreV2 { get; set; }
@@ -180,8 +182,9 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Dat, "dataLimitePagamento")]
         public DateTime? DataLimitePagamento { get; set; }
 
-        [DFeElement("informacoesComplementares")]
-        public InformacoesComplementares InformacoesComplementares { get; set; }
+        [DFeCollection("informacoesComplementares")]
+        [DFeItem(typeof(Informacao), "informacao")]
+        public List<Informacao> InformacoesComplementares { get; set; }
 
         [DFeElement(TipoCampo.Str, "nossoNumero")]
         public string NossoNumero { get; set; }

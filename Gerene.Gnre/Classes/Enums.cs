@@ -70,8 +70,10 @@ namespace Gerene.Gnre.Classes
 
     public enum TipoIdentificacao
     {
-        Cnpj = 1,
-        Cpf = 2
+        [DFeEnum("1")]
+        Cnpj,
+        [DFeEnum("2")]
+        Cpf
     }
 
     public enum TipoCampoExtra
@@ -83,9 +85,12 @@ namespace Gerene.Gnre.Classes
 
     public enum TipoGnre
     {
-        GnreSimples = 0,
-        GnreMultiplosDoctos = 1,
-        GnreMultiplasReceitas = 2
+        [DFeEnum("0")]
+        GnreSimples,
+        [DFeEnum("1")]
+        GnreMultiplosDoctos,
+        [DFeEnum("2")]
+        GnreMultiplasReceitas
     }
 
 }

@@ -63,9 +63,9 @@ namespace Gerene.Gnre.WebService
                 throw new ArgumentException(Falhas.ToString());
         }
 
-        private void ValidationEventHandler(object sender, ValidationEventArgs e)
+        private void ValidationEventHandler(object sender, ValidationEventArgs args)
         {
-            Falhas.AppendLine(e.Message);
+            Falhas.AppendLine($"[{args.Severity}] - {args.Message} {args.Exception?.Message} na linha {args.Exception.LineNumber} posição {args.Exception.LinePosition} em {args.Exception.SourceUri}".ToString());
         }
 
     }

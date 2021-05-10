@@ -1,6 +1,7 @@
 ﻿using ACBr.Net.DFe.Core.Attributes;
 using ACBr.Net.DFe.Core.Document;
 using ACBr.Net.DFe.Core.Serializer;
+using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
@@ -10,13 +11,14 @@ namespace Gerene.Gnre.Classes
         [DFeAttribute(TipoCampo.Str, "versao")]
         public string Versao { get; set; }
 
-        [DFeElement("guias")]
-        public GuiasRequest Guias { get; set; }
-
+        [DFeCollection("guias")]
+        [DFeItem(typeof(DadosGnreRequest), "TDadosGNRE")]
+        public List<DadosGnreRequest> Guias { get; set; }
+        
         public LoteGnreRequest()
         {
             Versao = "2.00";
-            Guias = new GuiasRequest();
+            Guias = new List<DadosGnreRequest>();
         }
     }
 }

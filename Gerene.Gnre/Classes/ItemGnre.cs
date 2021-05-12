@@ -46,7 +46,7 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Dat, "dataVencimento", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 6)]
         public DateTime? DataVencimento { get; set; }
 
-        [DFeCollection("valor", Tipo = TipoCampo.De2, Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 7)]
+        [DFeCollection("", Tipo = TipoCampo.De2, Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 7)]
         [DFeItem(typeof(DecimalCampo), "valor")]
         public List<DecimalCampo> Valor { get; set; }
 

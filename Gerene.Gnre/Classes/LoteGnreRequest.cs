@@ -5,18 +5,6 @@ using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
-    [DFeRoot("guias")]
-    public sealed class GuiasRequest : DFeDocument<GuiasRequest>
-    {
-        [DFeCollection("TDadosGNRE")]
-        public List<DadosGnreRequest> DadosGnre { get; set; }
-
-        public GuiasRequest()
-        {
-            DadosGnre = new List<DadosGnreRequest>();
-        }
-    }
-
     [DFeRoot("TLote_GNRE", Namespace = "http://www.gnre.pe.gov.br")]
     public sealed class LoteGnreRequest : DFeDocument<LoteGnreRequest>
     {
@@ -24,12 +12,13 @@ namespace Gerene.Gnre.Classes
         public string Versao { get; set; }
 
         [DFeCollection("guias")]
-        public GuiasRequest Guias { get; set; }
-        
+        [DFeItem(typeof(DadosGnreRequest), "TDadosGNRE")]
+        public List<DadosGnreRequest> Guias { get; set; }
+
         public LoteGnreRequest()
         {
             Versao = "2.00";
-            Guias = new GuiasRequest();
+            Guias = new List<DadosGnreRequest>();
         }
     }
 }

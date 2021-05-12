@@ -6,16 +6,10 @@ using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes
 {
-    public sealed class ItensGnre : DFeDocument<ItensGnre>
-    {
-        [DFeCollection("item")]
-        public List<ItemGnre> Item { get; set; }
-    }
-
     /// <summary>
-    /// Dados do Gnre para a versão 1.00 e 2.00.     
+    /// Dados do Gnre para a versão 1.00 e 2.00.
     /// </summary>
-    public sealed class DadosGnreRequest : DFeDocument<DadosGnreRequest>
+    public sealed class DadosGnreRequest
     {
         public DadosGnreRequest()
         {
@@ -28,6 +22,7 @@ namespace Gerene.Gnre.Classes
         public string Versao { get; set; }
 
         #region Versao1
+
         [DFeElement(TipoCampo.Str, "c01_UfFavorecida", Ocorrencia = Ocorrencia.Obrigatoria, Ordem = 1)]
         public string UfFavorecidaV1 { get; set; }
         public bool ShouldSerializeUfFavorecidaV1() => Versao == versao1;
@@ -140,9 +135,11 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "c42_identificadorGuia", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 28)]
         public string IdentificadorGuiaV1 { get; set; }
         public bool ShouldSerializeIdentificadorGuiaV1() => Versao == versao1;
-        #endregion
+
+        #endregion Versao1
 
         #region Versao2
+
         [DFeElement(TipoCampo.Str, "ufFavorecida", Ocorrencia = Ocorrencia.Obrigatoria, Ordem = 1)]
         public string UfFavorecida { get; set; }
         public bool ShouldSerializeUfFavorecida() => Versao == versao2;
@@ -155,8 +152,9 @@ namespace Gerene.Gnre.Classes
         public ContribuinteEmitente ContribuinteEmitente { get; set; }
         public bool ShouldSerializeIdContribuinteEmitente() => Versao == versao2;
 
-        [DFeElement("itensGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
-        public ItensGnre ItensGnre { get; set; }
+        [DFeItem(typeof(ItemGnre), "item")]
+        [DFeCollection("itensGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 4)]
+        public List<ItemGnre> Item { get; set; }
         public bool ShouldSerializeItensGnre() => Versao == versao2;
 
         [DFeElement(TipoCampo.De2, "valorGNRE", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 5)]
@@ -170,7 +168,7 @@ namespace Gerene.Gnre.Classes
         [DFeElement(TipoCampo.Str, "identificadorGuia", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 7)]
         public string IdentificadorGuia { get; set; }
         public bool ShouldSerializeIdentificadorGuia() => Versao == versao2;
-        #endregion
-    }
 
+        #endregion Versao2
+    }
 }

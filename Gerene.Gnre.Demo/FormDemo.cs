@@ -80,7 +80,7 @@ namespace Gerene.Gnre.Demo
             var request = new LoteGnreRequest()
             {
                 Versao = "2.00",
-                Guias = new GuiasRequest()
+                Guias = new List<DadosGnreRequest>()
             };
 
             //Substitua os dados para realizar o teste
@@ -105,52 +105,49 @@ namespace Gerene.Gnre.Demo
                     Cep = "17300000"
                 },
 
-                ItensGnre = new ItensGnre()
+                Item = new List<ItemGnre>()
                 {
-                    Item = new List<ItemGnre>()
+                    new ItemGnre()
                     {
-                        new ItemGnre()
+                        Receita = "100102",
+
+                        DocumentoOrigem = new StringTipo()
                         {
-                            Receita = "100102",
+                            Tipo = "24",
+                                Value = "00000000000000000000000000000000000000000000",
+                        },
+                        DataVencimento = DateTime.Today,
 
-                            DocumentoOrigem = new StringTipo()
+                        Valor = new List<DecimalCampo>()
+                        {
+                            new DecimalCampo()
                             {
-                                Tipo = "24",
-                                 Value = "00000000000000000000000000000000000000000000",
+                                Value = 25.00M,
+                                Tipo = "11"
                             },
-                            DataVencimento = DateTime.Today,
-
-                            Valor = new List<DecimalCampo>()
+                            new DecimalCampo()
                             {
-                                new DecimalCampo()
-                                {
-                                    Value = 25.00M,
-                                    Tipo = "11"
-                                },
-                                new DecimalCampo()
-                                {
-                                    Value = 15.00M,
-                                    Tipo = "12"
-                                }
+                                Value = 15.00M,
+                                Tipo = "12"
+                            }
+                        },
+
+                        ContribuinteDestinatario = new ContribuinteDestinatario()
+                        {
+                            IdContribuinteEmitente  =new IdContribuinte()
+                            {
+                                Cpf = "00000000000"
                             },
+                            RazaoSocial = "Destinatário Teste",
+                            Municipio = 00209
+                        },
 
-                            ContribuinteDestinatario = new ContribuinteDestinatario()
+                        CamposExtras = new List<CampoExtra2>()
+                        {
+                            new CampoExtra2()
                             {
-                                IdContribuinteEmitente  =new IdContribuinte()
-                                {
-                                    Cpf = "00000000000"
-                                },
-                                RazaoSocial = "Destinatário Teste",
-                                Municipio = 00209
-                            },
-
-                            CamposExtras = new List<CampoExtra2>()
-                            {
-                                new CampoExtra2()
-                                {
-                                    Codigo = 117,
-                                    Valor = DateTime.Today.ToString("yyyy-MM-dd")
-                                }
+                                Codigo = 117,
+                                Valor = DateTime.Today.ToString("yyyy-MM-dd")
                             }
                         }
                     }
@@ -160,7 +157,7 @@ namespace Gerene.Gnre.Demo
                 DataPagamento = DateTime.Today
             };
 
-            request.Guias.DadosGnre.Add(dados);
+            request.Guias.Add(dados);
 
             var client = GetClient();
 

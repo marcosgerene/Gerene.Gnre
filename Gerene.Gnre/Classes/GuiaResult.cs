@@ -197,6 +197,7 @@ namespace Gerene.Gnre.Classes
         public string CodigoBarras { get; set; }
 
         [DFeCollection("motivosRejeicao")]
+        [DFeItem(typeof(Motivo), "motivo")]
         public List<Motivo> MotivosRejeicao { get; set; }
         #endregion
     }

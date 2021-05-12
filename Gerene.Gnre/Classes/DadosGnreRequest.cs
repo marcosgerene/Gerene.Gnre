@@ -83,7 +83,7 @@ namespace Gerene.Gnre.Classes
         public string EnderecoEmitenteV1 { get; set; }
         public bool ShouldSerializeEnderecoEmitenteV1() => Versao == versao1;
 
-        [DFeElement(TipoCampo.Long, "c19_municipioEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 16)]
+        [DFeElement(TipoCampo.Long, "c19_municipioEmitente", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 16, Min = 5, Max = 5)]
         public long? MunicipioEmitenteV1 { get; set; }
         public bool ShouldSerializeMunicipioEmitenteV1() => Versao == versao1;
 
@@ -115,7 +115,7 @@ namespace Gerene.Gnre.Classes
         public string RazaoSocialDestinatarioV1 { get; set; }
         public bool ShouldSerializeInscricaoRazaoSocialDestinatarioV1() => Versao == versao1;
 
-        [DFeElement(TipoCampo.Long, "c38_municipioDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 24)]
+        [DFeElement(TipoCampo.Long, "c38_municipioDestinatario", Ocorrencia = Ocorrencia.NaoObrigatoria, Ordem = 24, Min = 5, Max = 5)]
         public long? MunicipioDestinatarioV1 { get; set; }
         public bool ShouldSerializeInscricaoMunicipioDestinatarioV1() => Versao == versao1;
 

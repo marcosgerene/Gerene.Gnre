@@ -37,7 +37,7 @@ namespace Gerene.Gnre.Classes
         [DFeEnum("2")]
         InvalidadaPelaUf = 2,
         [DFeEnum("3")]
-        ErroComunicaao = 3,
+        ErroComunicao = 3,
         [DFeEnum("4")]
         PendenciaProcessamento = 4
     }

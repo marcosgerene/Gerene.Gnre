@@ -1,6 +1,6 @@
 # Gerene.Gnre
 
-<!-- [![Nuget count](http://img.shields.io/nuget/v/Gerene.Gnre.svg)](https://www.nuget.org/packages/Gerene.Gnre) -->
+[![Nuget count](http://img.shields.io/nuget/v/Gerene.Gnre.svg)](https://www.nuget.org/packages/Gerene.Gnre)
 
 Projeto para consumo do webservice de Gnre (http://www.gnre.pe.gov.br/gnre/portal/GNRE_Principal.jsp).
 

@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="ACBr.Net.Core" Version="1.2.5" />
-    <PackageReference Include="ACBr.Net.DFe.Core" Version="1.2.8.4" />
+    <PackageReference Include="ACBr.Net.DFe.Core" Version="1.2.8.5" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="5.0.0" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.8.1" />
   </ItemGroup>

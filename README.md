@@ -1,8 +1,7 @@
+[![Nuget count](http://img.shields.io/nuget/v/Gerene.Gnre.svg)](https://www.nuget.org/packages/Gerene.Gnre)
+
 # Gerene.Gnre
-
-<!-- [![Nuget count](http://img.shields.io/nuget/v/Gerene.Gnre.svg)](https://www.nuget.org/packages/Gerene.Gnre) -->
-
-Projeto para consumo do webservice de Gnre (http://www.gnre.pe.gov.br/gnre/portal/GNRE_Principal.jsp).
+Projeto para consumo do webservice de Gnre nacional (http://www.gnre.pe.gov.br/gnre/portal/GNRE_Principal.jsp).
 
 O projeto foi desenvolvido em C# .Net Standard 2.0 e conta com um Demo em .Net 5.
 

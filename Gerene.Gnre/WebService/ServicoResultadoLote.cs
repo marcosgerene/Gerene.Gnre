@@ -30,7 +30,7 @@ namespace Gerene.Gnre.WebService
             if (Configuracao.ValidarSchemas)
                 new Validador(Configuracao).Validar(innerxml, ArquivoSchema);
 
-            string resposta = Executar(innerxml, "http://www.gnre.pe.gov.br/webservice/GnreResultadoLote", VersaoDados.Versao1, "consultar");
+            string resposta = Executar(innerxml, "http://www.gnre.pe.gov.br/webservice/GnreResultadoLote", VersaoDados.Versao2, "consultar");
 
             return ConsultarLoteResult.Load(resposta);
         }

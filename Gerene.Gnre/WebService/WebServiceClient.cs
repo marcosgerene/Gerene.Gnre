@@ -1,7 +1,7 @@
-﻿using ACBr.Net.Core;
-using ACBr.Net.Core.Extensions;
-using ACBr.Net.DFe.Core;
-using ACBr.Net.DFe.Core.Service;
+﻿using OpenAC.Net.Core;
+using OpenAC.Net.Core.Extensions;
+using OpenAC.Net.DFe.Core;
+using OpenAC.Net.DFe.Core.Service;
 using Gerene.Gnre.Classes;
 using System;
 using System.IO;
@@ -16,7 +16,7 @@ using System.Xml.Linq;
 
 namespace Gerene.Gnre.WebService
 {
-    //Baseado em https://github.com/ACBrNet/ACBr.Net.NFSe/blob/master/src/ACBr.Net.NFSe/Providers/NFSeServiceClient.cs
+    //Baseado em https://github.com/OpenACNet/OpenAC.Net.NFSe/blob/master/src/OpenAC.Net.NFSe/Providers/NFSeServiceClient.cs
     public abstract class WebServiceClient : DFeServiceClientBase<IRequestChannel>
     {
         protected readonly object serviceLock = new object();
@@ -91,7 +91,7 @@ namespace Gerene.Gnre.WebService
                 lock (serviceLock)
                 {
                     var response = Channel.Request(request);
-                    Guard.Against<ACBrDFeException>(response == null, "Nenhum retorno do webservice.");
+                    Guard.Against<OpenDFeException>(response == null, "Nenhum retorno do webservice.");
                     var reader = response.GetReaderAtBodyContents();
                     soapResponse = reader.ReadOuterXml();
                 }
@@ -125,7 +125,7 @@ namespace Gerene.Gnre.WebService
             {
                 var exMessage = $"{element.ElementAnyNs("Code")?.ElementAnyNs("Value")?.GetValue<string>()} - " +
                                 $"{element.ElementAnyNs("Reason")?.ElementAnyNs("Text")?.GetValue<string>()}";
-                throw new ACBrDFeCommunicationException(exMessage);
+                throw new OpenDFeCommunicationException(exMessage);
             }
 
             return xmlDocument.ToXmlDocument().OuterXml;

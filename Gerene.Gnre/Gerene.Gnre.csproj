@@ -5,20 +5,19 @@
     <PackageProjectUrl>https://github.com/marcosgerene/Gerene.Gnre</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>Projeto para consumo do webservice de Gnre (http://www.gnre.pe.gov.br/gnre/portal/GNRE_Principal.jsp).</Description>
-    <Version>1.0.4</Version>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <Version>1.0.5</Version>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ACBr.Net.Core" Version="1.2.5" />
-    <PackageReference Include="ACBr.Net.DFe.Core" Version="1.2.8.5" />
+    <PackageReference Include="OpenAC.Net.DFe.Core" Version="1.0.0" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="5.0.0" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="ACBr.Net.DFe.Core">
-      <HintPath>Lib\ACBr.Net.DFe.Core.dll</HintPath>
+    <Reference Include="OpenAC.Net.DFe.Core">
+      <HintPath>Lib\OpenAC.Net.DFe.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
 

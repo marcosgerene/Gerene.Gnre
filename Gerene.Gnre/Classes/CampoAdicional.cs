@@ -1,6 +1,6 @@
-﻿using ACBr.Net.DFe.Core.Attributes;
-using ACBr.Net.DFe.Core.Document;
-using ACBr.Net.DFe.Core.Serializer;
+﻿using OpenAC.Net.DFe.Core.Attributes;
+using OpenAC.Net.DFe.Core.Document;
+using OpenAC.Net.DFe.Core.Serializer;
 using System.Collections.Generic;
 
 namespace Gerene.Gnre.Classes

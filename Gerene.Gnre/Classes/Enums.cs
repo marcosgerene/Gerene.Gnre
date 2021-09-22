@@ -1,4 +1,4 @@
-﻿using ACBr.Net.DFe.Core.Attributes;
+﻿using OpenAC.Net.DFe.Core.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;

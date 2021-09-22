@@ -1,4 +1,4 @@
-﻿using ACBr.Net.DFe.Core.Common;
+﻿using OpenAC.Net.DFe.Core.Common;
 using Gerene.Gnre.Classes;
 using System;
 using System.Security.Cryptography.X509Certificates;

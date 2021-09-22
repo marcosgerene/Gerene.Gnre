@@ -1,5 +1,5 @@
-﻿using ACBr.Net.DFe.Core.Attributes;
-using ACBr.Net.DFe.Core.Serializer;
+﻿using OpenAC.Net.DFe.Core.Attributes;
+using OpenAC.Net.DFe.Core.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Text;
